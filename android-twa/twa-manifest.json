@@ -1,6 +1,6 @@
 {
   "packageId": "app.nalnaal.twa",
-  "host": "REPLACE_WITH_YOUR_NETLIFY_HOST",
+  "host": "nalnaal.netlify.app",
   "name": "நல்நாள் · NalNaal",
   "launcherName": "நல்நாள்",
   "display": "standalone",
@@ -11,14 +11,14 @@
   "backgroundColor": "#F7EFE1",
   "enableNotifications": false,
   "startUrl": "/index.html",
-  "iconUrl": "https://REPLACE_WITH_YOUR_NETLIFY_HOST/icons/icon-512.png",
-  "maskableIconUrl": "https://REPLACE_WITH_YOUR_NETLIFY_HOST/icons/icon-512.png",
+  "iconUrl": "https://nalnaal.netlify.app/icons/icon-512.png",
+  "maskableIconUrl": "https://nalnaal.netlify.app/icons/icon-512.png",
   "splashScreenFadeOutDuration": 300,
   "appVersionName": "1.0.0",
   "appVersionCode": 1,
-  "webManifestUrl": "https://REPLACE_WITH_YOUR_NETLIFY_HOST/manifest.json",
+  "webManifestUrl": "https://nalnaal.netlify.app/manifest.json",
   "fallbackType": "customtabs",
   "orientation": "portrait",
-  "fullScopeUrl": "https://REPLACE_WITH_YOUR_NETLIFY_HOST/",
+  "fullScopeUrl": "https://nalnaal.netlify.app/",
   "minSdkVersion": 21
 }

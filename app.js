@@ -208,7 +208,24 @@ function wireSwipe() {
 }
 
 async function init() {
-  DATA = await (await fetch("data.json")).json();
+  try {
+    const res = await fetch("data.json", { cache: "no-cache" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    DATA = await res.json();
+  } catch (err) {
+    // Network/parse failure on cold start — show a friendly retry instead of a blank screen.
+    const t = document.getElementById("occasionTitle");
+    const l = document.getElementById("occasionLine");
+    if (t) t.textContent = "இணைப்பு சிக்கல்";
+    if (l) l.innerHTML = "தகவலை ஏற்ற முடியவில்லை. மீண்டும் முயற்சிக்கவும்." +
+      '<span class="en">Couldn\u2019t load the calendar. Please check your connection and try again.</span>';
+    return;
+  }
+  if (!DATA || !DATA.days || !DATA.days.length) {
+    const t = document.getElementById("occasionTitle");
+    if (t) t.textContent = "—";
+    return;
+  }
   viewedDate = midnight(new Date());
   // header year labels from meta
   if (DATA.meta) {
