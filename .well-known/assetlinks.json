@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.nalnaal.twa",
+      "sha256_cert_fingerprints": [
+        "9B:F9:39:BD:EA:32:D5:94:36:57:1C:0A:FC:F1:AB:94:7F:20:5A:B9:D7:94:BD:5F:C7:A8:41:52:83:56:A0:6F"
+      ]
+    }
+  }
+]
