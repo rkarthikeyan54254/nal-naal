@@ -22,8 +22,9 @@ if [ "$CODE" != "200" ]; then
 fi
 echo "   OK (200)."
 
-echo "==> Initializing Bubblewrap (will prompt for signing key + may download Android SDK)..."
-npx @bubblewrap/cli@latest init --manifest ./twa-manifest.json
+echo "==> Initializing Bubblewrap from the LIVE web manifest (most reliable)..."
+echo "    (prompts for signing key; JDK/SDK already installed)"
+npx @bubblewrap/cli@latest init --manifest "https://$HOST/manifest.json"
 
 echo "==> Building..."
 npx @bubblewrap/cli@latest build
