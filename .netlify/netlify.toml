@@ -1,0 +1,43 @@
+headersOrigin = "config"
+plugins = []
+redirects = []
+
+[functions]
+
+[functions."*"]
+
+[build]
+publish = "/Users/rama/Documents/AI_Playground/tamil-nal-app"
+publishOrigin = "config"
+
+[build.environment]
+
+[build.processing]
+
+[build.processing.css]
+
+[build.processing.html]
+
+[build.processing.images]
+
+[build.processing.js]
+
+[build.services]
+
+[[headers]]
+for = "/sw.js"
+
+[headers.values]
+Cache-Control = "no-cache"
+
+[[headers]]
+for = "/manifest.json"
+
+[headers.values]
+Cache-Control = "no-cache"
+
+[[headers]]
+for = "/data.json"
+
+[headers.values]
+Cache-Control = "no-cache"
