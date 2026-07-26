@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+._*
+
+# backups & scratch
+*.bak
+*.bak-*
+data.json.bak-*
+app.js.bak
+
+# server logs
+*.log
+/tmp/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+
+# editor
+.vscode/
+.idea/

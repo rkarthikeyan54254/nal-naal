@@ -1,0 +1,435 @@
+:root {
+  --sindooram: #A31621;
+  --sindooram-deep: #7A0E19;
+  --garbha: #2A0A0E;
+  --deepam: #F4C56B;
+  --deepam-bright: #FBD98C;
+  --chandanam: #F7EFE1;
+  --chandanam-dim: #EADBC4;
+  --maruthaani: #14514A;
+  --ink: #2C1A12;
+  --ink-soft: #6B5647;
+  --shadow: 0 12px 34px rgba(42,10,14,0.18);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--chandanam);
+  color: var(--ink);
+  font-family: 'Catamaran', system-ui, sans-serif;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+}
+body { min-height: 100vh; overflow-x: hidden; }
+
+.kolam-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(var(--sindooram) 1.1px, transparent 1.6px);
+  background-size: 30px 30px; opacity: 0.05;
+}
+
+.app {
+  position: relative; z-index: 1;
+  max-width: 460px; margin: 0 auto;
+  padding: 20px 18px 60px;
+}
+
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 4px 4px 14px;
+}
+.brand { display: flex; flex-direction: column; line-height: 1; }
+.brand-mark {
+  font-size: 21px; font-weight: 800; color: var(--sindooram);
+  letter-spacing: -0.01em;
+}
+.brand-sub {
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--maruthaani);
+  margin-top: 3px;
+}
+.icon-btn {
+  background: none; border: none; color: var(--sindooram);
+  width: 42px; height: 42px; border-radius: 50%;
+  display: grid; place-items: center; cursor: pointer;
+  transition: background .15s;
+}
+.icon-btn:hover, .icon-btn:focus-visible { background: rgba(163,22,33,0.09); }
+.icon-btn:focus-visible { outline: 2px solid var(--sindooram); outline-offset: 2px; }
+
+/* ============ HERO — gopuram sanctum card ============ */
+.hero-wrap { position: relative; margin-top: 6px; }
+.hero {
+  position: relative;
+  background: radial-gradient(120% 80% at 50% 0%, var(--sindooram) 0%, var(--sindooram-deep) 60%, var(--garbha) 130%);
+  color: var(--chandanam);
+  border-radius: 130px 130px 26px 26px;
+  padding: 22px 24px 24px;
+  text-align: center;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  border: 1px solid rgba(244,197,107,0.25);
+}
+.hero::before {
+  content: ""; position: absolute; inset: 9px;
+  border: 1.5px solid rgba(244,197,107,0.38);
+  border-radius: 122px 122px 18px 18px;
+  pointer-events: none;
+}
+.hero::after {
+  content: ""; position: absolute; left: 50%; top: 90px;
+  width: 260px; height: 260px; margin-left: -130px;
+  background: radial-gradient(circle, rgba(244,197,107,0.30), transparent 62%);
+  pointer-events: none; z-index: 1;
+}
+.finial {
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--deepam); box-shadow: 0 0 12px var(--deepam-bright);
+  z-index: 3;
+}
+.rel-pill { margin-bottom: 10px; margin-top: 2px; }
+
+/* --- date band, now subordinate to the deity, sits below the title --- */
+.hero-datebar {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  margin: 18px auto 0; padding-top: 18px;
+}
+.hero-datebar::before {
+  content: ""; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 56px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(244,197,107,0.5), transparent);
+}
+.hd-tamil { display: flex; align-items: center; gap: 13px; }
+.hero-day {
+  font-size: 44px; font-weight: 900; line-height: .85;
+  color: var(--deepam-bright);
+  text-shadow: 0 2px 14px rgba(244,197,107,0.35);
+}
+.hd-monthwrap { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; gap: 1px; }
+.hero-month { font-size: 19px; font-weight: 800; }
+.hero-weekday { font-size: 11.5px; font-weight: 600; opacity: .8; }
+.hd-greg {
+  font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: .03em;
+  opacity: .5; padding-left: 16px; border-left: 1px solid rgba(244,197,107,0.3);
+}
+
+.niche {
+  position: relative; z-index: 2;
+  width: 132px; height: 132px; margin: 16px auto 8px;
+}
+.emblem-svg { width: 100%; height: 100%; display: block; }
+.halo { fill: var(--deepam); opacity: .16; }
+.gold-fill { fill: var(--deepam); }
+.gold-ring { fill: none; stroke: var(--deepam); stroke-width: 4; }
+.gold-stroke { stroke: var(--deepam); stroke-width: 3; fill: none; stroke-linecap: round; }
+.gold-stroke-thick { stroke: var(--deepam); stroke-width: 5; fill: none; stroke-linecap: round; }
+.gold-stroke-river { stroke: var(--deepam); stroke-width: 3.5; fill: none; stroke-linecap: round; }
+.niche-fill { fill: var(--garbha); }
+.niche-stroke { stroke: var(--garbha); stroke-width: 2; fill: none; }
+.accent-red { fill: var(--sindooram); }
+.accent-soft { fill: #C97B54; opacity: .45; }
+
+.occasion-title {
+  position: relative; z-index: 2; text-wrap: balance;
+  font-size: 27px; font-weight: 900; line-height: 1.12;
+  margin: 14px 12px 8px;
+  letter-spacing: -0.005em;
+}
+.occasion-line {
+  position: relative; z-index: 2;
+  font-size: 14.5px; line-height: 1.55; margin: 0 auto; max-width: 300px; opacity: .94;
+}
+.occasion-line .en {
+  display: block; margin-top: 5px;
+  font-family: 'Inter', sans-serif; font-size: 12px; opacity: .68;
+}
+.confidence-tag {
+  position: relative; z-index: 2; display: inline-flex; align-items: center; gap: 5px;
+  margin-top: 14px;
+  font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600;
+  letter-spacing: .04em; padding: 5px 12px; border-radius: 999px;
+  background: rgba(247,239,225,0.12); color: var(--chandanam);
+}
+.confidence-tag.approximate { background: rgba(244,197,107,0.22); color: var(--deepam-bright); }
+
+.kolam-divider { color: var(--sindooram); opacity: .55; margin: 26px 6px 14px; }
+
+.section-head { display: flex; align-items: baseline; gap: 8px; margin: 0 4px 14px; }
+.section-ta { font-size: 16px; font-weight: 800; color: var(--sindooram-deep); }
+.section-en {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--maruthaani);
+}
+
+.upcoming-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 11px; }
+.upcoming-item {
+  display: flex; align-items: center; gap: 13px;
+  background: #fff; border: 1px solid var(--chandanam-dim);
+  border-radius: 18px; padding: 11px 14px;
+  box-shadow: 0 3px 10px rgba(42,10,14,0.05);
+  cursor: pointer; transition: box-shadow .15s, transform .1s;
+}
+.upcoming-item:hover { box-shadow: 0 6px 16px rgba(42,10,14,0.1); }
+.upcoming-item:active { transform: scale(0.99); }
+.upcoming-item.hi { background: linear-gradient(180deg, #fff, #FFFBF3); }
+/* real deity photo thumbnail */
+.up-thumb {
+  width: 52px; height: 52px; flex-shrink: 0; border-radius: 13px;
+  overflow: hidden; border: 1.5px solid var(--deepam);
+  box-shadow: 0 2px 6px rgba(42,10,14,0.15);
+  background: var(--garbha);
+}
+.up-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.up-thumb.is-emblem {
+  display: grid; place-items: center; padding: 5px;
+  background: radial-gradient(circle at 50% 40%, var(--sindooram), var(--sindooram-deep));
+}
+.up-thumb.is-emblem .emblem-svg { width: 100%; height: 100%; }
+.up-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.up-title {
+  font-weight: 800; font-size: 15px; line-height: 1.2; color: var(--ink);
+  overflow: hidden; text-overflow: ellipsis;
+}
+.up-sub {
+  font-family: 'Inter', sans-serif; font-size: 11px; color: var(--ink-soft);
+  display: flex; align-items: center; gap: 7px; flex-wrap: wrap;
+}
+.up-nak {
+  display: inline-block; font-family: 'Catamaran', sans-serif; font-weight: 700;
+  font-size: 10.5px; color: var(--maruthaani);
+  background: rgba(20,81,74,0.08); padding: 1px 8px; border-radius: 999px;
+}
+.up-when {
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  color: var(--sindooram); text-align: right; white-space: nowrap; flex-shrink: 0;
+}
+.up-when small { display: block; font-weight: 500; color: var(--ink-soft); font-size: 10px; margin-top: 1px; }
+
+.sheet-backdrop {
+  position: fixed; inset: 0; background: rgba(42,10,14,0.5);
+  opacity: 0; pointer-events: none; transition: opacity .25s; z-index: 40;
+}
+.sheet-backdrop.open { opacity: 1; pointer-events: auto; }
+.sheet {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+  max-width: 460px; margin: 0 auto;
+  background: var(--chandanam);
+  border-radius: 30px 30px 0 0; padding: 12px 22px 30px;
+  transform: translateY(100%); transition: transform .32s cubic-bezier(.32,.72,0,1);
+  max-height: 88vh; overflow-y: auto;
+  box-shadow: 0 -14px 44px rgba(42,10,14,0.3);
+}
+.sheet.open { transform: translateY(0); }
+.sheet-handle { width: 42px; height: 4px; background: var(--chandanam-dim); border-radius: 999px; margin: 6px auto 18px; }
+.sheet-title { font-size: 21px; font-weight: 900; margin: 0 0 5px; color: var(--sindooram-deep); }
+.sheet-sub { font-family: 'Inter', sans-serif; font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; margin: 0 0 20px; }
+
+.category-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 22px; }
+.category-chip {
+  display: flex; align-items: center; gap: 10px;
+  border: 1.5px solid var(--chandanam-dim); background: #fff;
+  border-radius: 15px; padding: 11px 12px; cursor: pointer;
+  transition: border-color .15s, background .15s; text-align: left;
+}
+.category-chip.active { border-color: var(--sindooram); background: rgba(163,22,33,0.05); }
+.chip-emblem {
+  width: 30px; height: 30px; flex-shrink: 0; border-radius: 8px;
+  background: radial-gradient(circle at 50% 40%, var(--sindooram), var(--sindooram-deep));
+  display: grid; place-items: center; padding: 3px;
+}
+.chip-emblem .emblem-svg { width: 100%; height: 100%; }
+.chip-label { font-size: 13px; font-weight: 800; color: var(--ink); line-height: 1.15; }
+.chip-label .en { display: block; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: var(--ink-soft); }
+
+.lead-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 22px; font-family: 'Inter', sans-serif; }
+.lead-label { font-size: 13px; font-weight: 600; }
+.lead-select {
+  font-family: 'Inter', sans-serif; font-size: 13px; padding: 9px 12px;
+  border-radius: 11px; border: 1.5px solid var(--chandanam-dim); background: #fff; color: var(--ink);
+}
+.primary-btn {
+  width: 100%; background: var(--sindooram); color: #fff; border: none;
+  border-radius: 15px; padding: 16px; font-family: 'Inter', sans-serif;
+  font-size: 14.5px; font-weight: 700; cursor: pointer; transition: background .15s;
+}
+.primary-btn:hover { background: var(--sindooram-deep); }
+.primary-btn:focus-visible { outline: 2px solid var(--maruthaani); outline-offset: 2px; }
+.notif-status { font-family: 'Inter', sans-serif; font-size: 12px; text-align: center; color: var(--ink-soft); margin: 12px 0 0; min-height: 16px; }
+.text-btn { display: block; margin: 16px auto 0; background: none; border: none; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: var(--ink-soft); cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sheet, .sheet-backdrop, .icon-btn, .category-chip, .primary-btn { transition: none; }
+  .hero-day { text-shadow: none; }
+}
+@media (min-width: 460px) {
+  body { background: var(--chandanam-dim); }
+  .app { background: var(--chandanam); border-radius: 30px; margin: 22px auto; min-height: calc(100vh - 44px); box-shadow: var(--shadow); }
+}
+
+/* ============ date navigation ============ */
+.nav-arrow {
+  position: absolute; top: 34%; transform: translateY(-50%);
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.92); border: 1px solid var(--chandanam-dim);
+  color: var(--sindooram); display: grid; place-items: center;
+  cursor: pointer; z-index: 5; box-shadow: 0 3px 10px rgba(42,10,14,0.14);
+  transition: background .15s, transform .1s;
+}
+.nav-arrow:hover { background: #fff; }
+.nav-arrow:active { transform: translateY(-50%) scale(0.92); }
+.nav-arrow:focus-visible { outline: 2px solid var(--sindooram); outline-offset: 2px; }
+.nav-prev { left: 8px; }
+.nav-next { right: 8px; }
+
+.rel-pill {
+  position: relative; z-index: 2; display: inline-block;
+  font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: .03em; color: var(--garbha);
+  background: var(--deepam); padding: 4px 13px; border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.date-tools {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 10px; margin: 14px 4px 2px; flex-wrap: wrap;
+}
+.today-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Catamaran', sans-serif; font-size: 13px; font-weight: 700;
+  color: var(--sindooram); background: rgba(163,22,33,0.08);
+  border: none; border-radius: 999px; padding: 8px 15px; cursor: pointer;
+  transition: background .15s;
+}
+.today-btn svg { flex-shrink: 0; }
+.today-btn:hover { background: rgba(163,22,33,0.14); }
+.jump-label {
+  display: inline-flex; align-items: center; gap: 8px; margin-left: auto;
+  font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; color: var(--ink-soft);
+}
+.jump-date {
+  font-family: 'Inter', sans-serif; font-size: 12.5px; padding: 7px 10px;
+  border-radius: 10px; border: 1.5px solid var(--chandanam-dim);
+  background: #fff; color: var(--ink);
+}
+
+/* ============ deity photo in the niche — the emotional hero (crown position) ============ */
+.niche.has-photo {
+  width: 208px; height: 258px; margin: 6px auto 4px;
+}
+.photo-frame {
+  position: relative;
+  width: 100%; height: 100%;
+  border-radius: 100px 100px 18px 18px;   /* arched top, echoing the gopuram */
+  overflow: hidden;
+  border: 2.5px solid var(--deepam);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 0 1px rgba(42,10,14,0.5),
+              0 0 40px rgba(244,197,107,0.25);   /* gold lamp-glow around the murti */
+  background: var(--garbha);
+}
+.photo-frame::after {   /* subtle inner vignette so the deity sits in a niche */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  border-radius: 100px 100px 18px 18px;
+  box-shadow: inset 0 -30px 40px rgba(42,10,14,0.45), inset 0 0 0 2px rgba(244,197,107,0.3);
+}
+.deity-photo {
+  width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
+}
+.photo-credit {
+  position: relative; z-index: 2;
+  font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: .02em;
+  color: var(--deepam-bright); opacity: .62; margin-top: 10px; font-weight: 500;
+}
+/* daily-blessing days: image slightly calmer, title styled as a gentle blessing */
+.hero.is-daily .occasion-title { font-size: 25px; }
+.hero.is-daily .photo-frame { box-shadow: 0 10px 28px rgba(0,0,0,0.35), 0 0 0 1px rgba(42,10,14,0.5), 0 0 30px rgba(244,197,107,0.18); }
+
+/* ============ panchangam strip (nakshatram + tithi) ============ */
+.panchangam-strip {
+  position: relative; z-index: 2;
+  display: inline-flex; align-items: center; gap: 14px;
+  margin: 16px auto 2px; padding: 7px 16px;
+  background: rgba(247,239,225,0.1);
+  border: 1px solid rgba(244,197,107,0.28);
+  border-radius: 999px;
+}
+.pstat { display: flex; flex-direction: column; align-items: center; line-height: 1.15; }
+.plabel {
+  font-family: 'Inter', sans-serif; font-size: 8.5px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--deepam); opacity: .8;
+}
+.pval { font-size: 15px; font-weight: 800; color: var(--chandanam); margin-top: 1px; }
+.pdivider { width: 1px; height: 24px; background: rgba(244,197,107,0.3); }
+
+/* ============ brand year name ============ */
+.brand-year {
+  font-family: 'Catamaran', sans-serif; font-size: 12.5px; font-weight: 800;
+  color: var(--sindooram-deep); letter-spacing: .01em; margin-top: 3px; line-height: 1.1;
+}
+.brand-sub {
+  font-family: 'Inter', sans-serif; font-size: 9.5px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--maruthaani);
+  margin-top: 2px;
+}
+
+/* ============ redesigned jump-to-date pill ============ */
+.jump-btn {
+  position: relative; display: inline-flex; align-items: center; gap: 7px;
+  margin-left: auto;
+  font-family: 'Catamaran', sans-serif; font-size: 13px; font-weight: 700;
+  color: var(--sindooram-deep);
+  background: linear-gradient(180deg, #fff, var(--chandanam));
+  border: 1.5px solid var(--deepam);
+  border-radius: 999px; padding: 8px 15px; cursor: pointer;
+  box-shadow: 0 2px 8px rgba(42,10,14,0.08);
+  transition: transform .1s, box-shadow .15s, border-color .15s;
+}
+.jump-btn:hover { border-color: var(--sindooram); box-shadow: 0 3px 12px rgba(163,22,33,0.16); }
+.jump-btn:active { transform: scale(0.96); }
+.jump-btn svg { color: var(--sindooram); }
+/* hide the native date input but keep it clickable/focusable over the button */
+.jump-date-hidden {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0; border: 0; padding: 0; margin: 0; cursor: pointer;
+}
+.jump-date-hidden::-webkit-calendar-picker-indicator { opacity: 0; }
+
+/* ============ star-deity chip (shown on festival days so the star deity is never erased) ============ */
+.star-chip {
+  position: relative; z-index: 2;
+  display: inline-flex; align-items: center; gap: 9px;
+  margin: 12px auto 0; padding: 5px 14px 5px 5px;
+  background: rgba(247,239,225,0.1);
+  border: 1px solid rgba(244,197,107,0.3);
+  border-radius: 999px;
+}
+.star-chip-img {
+  width: 34px; height: 34px; flex-shrink: 0; border-radius: 50%;
+  overflow: hidden; border: 1.5px solid var(--deepam); background: var(--garbha);
+}
+.star-chip-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.star-chip-text { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.15; }
+.star-chip-nak {
+  font-family: 'Inter', sans-serif; font-size: 8.5px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--deepam); opacity: .85;
+}
+.star-chip-deity { font-family: 'Catamaran', sans-serif; font-size: 13px; font-weight: 800; color: var(--chandanam); }
+
+/* ============ temple-finder button — refined ghost style, invites without shouting ============ */
+.temple-btn {
+  position: relative; z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px;
+  margin: 14px auto 0; padding: 9px 18px;
+  font-family: 'Catamaran', sans-serif; font-size: 13px; font-weight: 700;
+  color: var(--deepam-bright);
+  background: rgba(244,197,107,0.1);
+  border: 1.5px solid rgba(244,197,107,0.55);
+  border-radius: 999px; cursor: pointer;
+  transition: background .15s, border-color .15s, transform .1s;
+}
+.temple-btn:hover { background: rgba(244,197,107,0.2); border-color: var(--deepam); }
+.temple-btn:active { transform: scale(0.97); }
+.temple-btn svg { color: var(--deepam-bright); flex-shrink: 0; }

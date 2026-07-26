@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>நல்நாள் · NalNaal</title>
+<meta name="description" content="இன்றைய தமிழ் நாள் — the sacred character of today, one glance away.">
+<meta name="theme-color" content="#A31621">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<meta name="apple-mobile-web-app-title" content="நல்நாள்">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="kolam-bg" aria-hidden="true"></div>
+
+<main class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">இன்று</span>
+      <span class="brand-year" id="tamilYearLabel">ஸ்ரீ பரபாவ வருடம்</span>
+      <span class="brand-sub" id="yearLabel">கலியுகம் 5127</span>
+    </div>
+    <button class="icon-btn" id="settingsBtn" aria-label="Reminders">
+      <svg viewBox="0 0 24 24" width="23" height="23"><path fill="currentColor" d="M12 8a4 4 0 100 8 4 4 0 000-8zm8.94 3a7.99 7.99 0 00-.14-1.5l2.11-1.65a.5.5 0 00.12-.64l-2-3.46a.5.5 0 00-.6-.22l-2.49 1a8.03 8.03 0 00-1.3-.75l-.38-2.65A.5.5 0 0015.7 1h-4a.5.5 0 00-.5.42l-.38 2.65c-.47.2-.9.45-1.3.75l-2.49-1a.5.5 0 00-.6.22l-2 3.46a.5.5 0 00.12.64L6.2 9.5A8 8 0 006.06 11a8 8 0 00.14 1.5l-2.11 1.65a.5.5 0 00-.12.64l2 3.46c.14.24.42.32.6.22l2.49-1c.4.3.83.55 1.3.75l.38 2.65c.05.24.26.42.5.42h4c.24 0 .45-.18.5-.42l.38-2.65c.47-.2.9-.45 1.3-.75l2.49 1c.24.1.46 0 .6-.22l2-3.46a.5.5 0 00-.12-.64L20.8 12.5c.08-.49.14-.99.14-1.5z"/></svg>
+    </button>
+  </header>
+
+  <div class="hero-wrap">
+    <button class="nav-arrow nav-prev" id="prevDay" aria-label="Previous day">
+      <svg viewBox="0 0 24 24" width="24" height="24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <button class="nav-arrow nav-next" id="nextDay" aria-label="Next day">
+      <svg viewBox="0 0 24 24" width="24" height="24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+    </button>
+
+    <div class="hero" id="heroCard">
+      <span class="finial" aria-hidden="true"></span>
+      <span class="rel-pill" id="relPill">இன்று · Today</span>
+
+      <div class="niche" id="niche" aria-hidden="true"></div>
+
+      <h1 class="occasion-title" id="occasionTitle">ஆஷாட ஏகாதசி</h1>
+      <p class="occasion-line" id="occasionLine"></p>
+      <span class="confidence-tag" id="confidenceTag"></span>
+      <div class="photo-credit" id="photoCredit"></div>
+
+      <div class="star-chip" id="starChip" style="display:none">
+        <span class="star-chip-img" id="starChipImg"></span>
+        <span class="star-chip-text">
+          <span class="star-chip-nak" id="starChipNak"></span>
+          <span class="star-chip-deity" id="starChipDeity"></span>
+        </span>
+      </div>
+
+      <button class="temple-btn" id="templeBtn" type="button" style="display:none">
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-5.2-7-11a7 7 0 1114 0c0 5.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        <span id="templeBtnLabel">அருகிலுள்ள கோயில்</span>
+      </button>
+
+      <div class="hero-datebar">
+        <div class="hd-tamil">
+          <span class="hero-day" id="tamilDay">9</span>
+          <span class="hd-monthwrap">
+            <span class="hero-month" id="tamilMonth">ஆடி</span>
+            <span class="hero-weekday" id="weekday">சனிக்கிழமை</span>
+          </span>
+        </div>
+        <div class="hd-greg" id="gregorianDate">July 25, 2026</div>
+      </div>
+
+      <div class="panchangam-strip" id="panchangamStrip">
+        <span class="pstat"><span class="plabel">நட்சத்திரம்</span><span class="pval" id="nakVal">—</span></span>
+        <span class="pdivider"></span>
+        <span class="pstat"><span class="plabel">திதி</span><span class="pval" id="tithiVal">—</span></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="date-tools">
+    <button class="today-btn" id="todayBtn" style="display:none"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M3 12a9 9 0 109-9 9 9 0 00-6.4 2.6L3 8M3 4v4h4"/></svg><span>இன்றைக்கு · Today</span></button>
+    <button class="jump-btn" id="jumpBtn" type="button" aria-label="Jump to date">
+      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M7 2v3M17 2v3M3.5 8.5h17M4 5.5h16a1 1 0 011 1V19a1 1 0 01-1 1H4a1 1 0 01-1-1V6.5a1 1 0 011-1z"/></svg>
+      <span>தேதிக்கு செல்</span>
+      <input type="date" id="jumpDate" class="jump-date-hidden" aria-label="Choose a date">
+    </button>
+  </div>
+
+  <div class="kolam-divider" aria-hidden="true">
+    <svg viewBox="0 0 320 22" preserveAspectRatio="xMidYMid meet" width="100%" height="22">
+      <g fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 11 Q20 -3 34 11 Q48 25 62 11 Q76 -3 90 11 Q104 25 118 11 Q132 -3 146 11 Q160 25 174 11 Q188 -3 202 11 Q216 25 230 11 Q244 -3 258 11 Q272 25 286 11 Q300 -3 314 11"/>
+        <circle cx="6" cy="11" r="2.3" fill="currentColor" stroke="none"/><circle cx="62" cy="11" r="2.3" fill="currentColor" stroke="none"/><circle cx="118" cy="11" r="2.3" fill="currentColor" stroke="none"/><circle cx="174" cy="11" r="2.3" fill="currentColor" stroke="none"/><circle cx="230" cy="11" r="2.3" fill="currentColor" stroke="none"/><circle cx="286" cy="11" r="2.3" fill="currentColor" stroke="none"/>
+      </g>
+    </svg>
+  </div>
+
+  <section class="upcoming">
+    <div class="section-head">
+      <span class="section-ta">அடுத்து வரும் நாட்கள்</span>
+      <span class="section-en">Coming up</span>
+    </div>
+    <ul class="upcoming-list" id="upcomingList"></ul>
+  </section>
+</main>
+
+<div class="sheet-backdrop" id="sheetBackdrop"></div>
+<section class="sheet" id="settingsSheet" aria-hidden="true">
+  <div class="sheet-handle"></div>
+  <h2 class="sheet-title">என் நினைவூட்டல்கள்</h2>
+  <p class="sheet-sub">எந்த நாட்கள் உங்களுக்கு முக்கியம்? தேர்ந்தெடுங்கள் — முன்கூட்டியே நினைவூட்டுவோம்.<br>Pick the days that matter to you — we'll remind you ahead of time.</p>
+  <div class="category-grid" id="categoryGrid"></div>
+  <div class="lead-row">
+    <span class="lead-label">முன்கூட்டியே · Remind me</span>
+    <select id="leadTime" class="lead-select">
+      <option value="0">அன்றே · same day</option>
+      <option value="1" selected>1 நாள் முன் · 1 day before</option>
+      <option value="2">2 நாட்கள் முன் · 2 days before</option>
+      <option value="3">3 நாட்கள் முன் · 3 days before</option>
+    </select>
+  </div>
+  <button class="primary-btn" id="enableNotifs">அறிவிப்புகளை இயக்கு · Turn on reminders</button>
+  <p class="notif-status" id="notifStatus"></p>
+  <button class="text-btn" id="closeSheet">மூடு · Close</button>
+</section>
+
+<script src="emblems.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

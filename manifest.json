@@ -1,0 +1,21 @@
+{
+  "name": "நல்நாள் · NalNaal",
+  "short_name": "நல்நாள்",
+  "description": "நல்நாள் — Tamil daily calendar. Auspicious days, nakshatram, tithi & festivals, one darshan at a time.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7EFE1",
+  "theme_color": "#7A0E19",
+  "lang": "ta",
+  "categories": ["lifestyle", "utilities"],
+  "icons": [
+    { "src": "icons/icon-96.png",  "sizes": "96x96",   "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-144.png", "sizes": "144x144", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-152.png", "sizes": "152x152", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-180.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
