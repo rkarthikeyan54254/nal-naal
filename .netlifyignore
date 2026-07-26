@@ -1,0 +1,10 @@
+# Files/folders excluded from Netlify deploys — keep build artifacts and secrets off the public site
+android-twa/
+*.keystore
+*.jks
+*.apk
+*.aab
+*.bak
+*.bak-*
+__pycache__/
+generate_panchangam.py

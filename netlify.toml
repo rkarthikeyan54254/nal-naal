@@ -1,6 +1,19 @@
 [build]
   publish = "."
 
+# Block build artifacts / secrets from ever being served publicly
+[[redirects]]
+  from = "/android-twa/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/*.keystore"
+  to = "/404.html"
+  status = 404
+  force = true
+
 [[headers]]
   for = "/sw.js"
   [headers.values]
