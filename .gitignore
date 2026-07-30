@@ -42,3 +42,6 @@ android-twa/gradle/
 android-twa/build.gradle
 android-twa/settings.gradle
 android-twa/store_icon.png
+
+# VAPID push secrets — never commit
+VAPID_KEYS_SECRET.txt

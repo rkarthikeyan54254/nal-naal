@@ -188,11 +188,47 @@ function updateNotifStatus() {
   else if (Notification.permission === "denied") el.textContent = "தடுக்கப்பட்டது — சாதன அமைப்புகளில் மாற்றவும் · Blocked in settings.";
   else el.textContent = "";
 }
+// --- Web Push config ---
+const PUSH = {
+  publicKey: "BEiF_Q7dJu7lQg423gjmqkpPJRbY_3Uv-qT-FiToVWT08yaIpMGLforiidbmTbtIztgASAovKVIqiUsoTPVkEK0",
+  subscribeUrl: "https://jfyjfgfbnhbzbaoqeygj.supabase.co/functions/v1/nalnaal-subscribe",
+  anonKey: "sb_publishable_T1hGBle-wUTIeDUC6l5Ulg_LXiq2rGH"
+};
+function urlB64ToUint8(base64) {
+  const pad = "=".repeat((4 - base64.length % 4) % 4);
+  const b64 = (base64 + pad).replace(/-/g, "+").replace(/_/g, "/");
+  const raw = atob(b64); const arr = new Uint8Array(raw.length);
+  for (let i = 0; i < raw.length; i++) arr[i] = raw.charCodeAt(i);
+  return arr;
+}
 async function enableNotifications() {
-  if (!("Notification" in window)) { updateNotifStatus(); return; }
-  const p = await Notification.requestPermission();
-  if (p === "granted") { prefs.notifsEnabled = true; savePrefs(prefs); new Notification("இன்று · Tamil Nal", { body: "நினைவூட்டல்கள் இயக்கப்பட்டன 🪔", icon: "icons/icon-192.png" }); }
-  updateNotifStatus();
+  const el = document.getElementById("notifStatus");
+  if (!("Notification" in window) || !("serviceWorker" in navigator) || !("PushManager" in window)) {
+    if (el) el.textContent = "இந்த சாதனத்தில் அறிவிப்புகள் ஆதரிக்கப்படவில்லை · Not supported here."; return;
+  }
+  try {
+    if (el) el.textContent = "…";
+    const perm = await Notification.requestPermission();
+    if (perm !== "granted") { updateNotifStatus(); return; }
+    const reg = await navigator.serviceWorker.ready;
+    let sub = await reg.pushManager.getSubscription();
+    if (!sub) {
+      sub = await reg.pushManager.subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlB64ToUint8(PUSH.publicKey)
+      });
+    }
+    const res = await fetch(PUSH.subscribeUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + PUSH.anonKey, "apikey": PUSH.anonKey },
+      body: JSON.stringify({ subscription: sub })
+    });
+    if (!res.ok) throw new Error("subscribe failed " + res.status);
+    prefs.notifsEnabled = true; savePrefs(prefs);
+    if (el) el.textContent = "✓ அறிவிப்புகள் இயக்கத்தில் · Daily reminders on.";
+  } catch (err) {
+    if (el) el.textContent = "அறிவிப்பை இயக்க முடியவில்லை · Couldn't enable. Try again.";
+  }
 }
 
 function wireSwipe() {

@@ -1,4 +1,4 @@
-const CACHE = "nalnaal-v19";
+const CACHE = "nalnaal-v20";
 const ASSETS = [
   "./","./index.html","./styles.css","./app.js","./emblems.js",
   "./data.json","./manifest.json","./icons/icon-96.png","./icons/icon-144.png","./icons/icon-152.png","./icons/icon-180.png","./icons/icon-192.png","./icons/icon-512.png",
@@ -64,5 +64,32 @@ self.addEventListener("fetch", e => {
       }
       return res;
     }))
+  );
+});
+
+// --- Web Push: show notification when a push arrives (even if app is closed) ---
+self.addEventListener("push", e => {
+  let d = {};
+  try { d = e.data ? e.data.json() : {}; } catch (_) { d = { title: "நல்நாள்", body: e.data ? e.data.text() : "" }; }
+  const title = d.title || "நல்நாள் · NalNaal";
+  const opts = {
+    body: d.body || "",
+    icon: d.icon || "./icons/icon-192.png",
+    badge: d.badge || "./icons/icon-96.png",
+    data: { url: d.url || "https://nalnaal.netlify.app/" },
+    vibrate: [80, 40, 80]
+  };
+  e.waitUntil(self.registration.showNotification(title, opts));
+});
+
+// Tapping the notification opens/focuses the app.
+self.addEventListener("notificationclick", e => {
+  e.notification.close();
+  const target = (e.notification.data && e.notification.data.url) || "https://nalnaal.netlify.app/";
+  e.waitUntil(
+    clients.matchAll({ type: "window", includeUncontrolled: true }).then(list => {
+      for (const c of list) { if (c.url.includes("nalnaal") && "focus" in c) return c.focus(); }
+      if (clients.openWindow) return clients.openWindow(target);
+    })
   );
 });
