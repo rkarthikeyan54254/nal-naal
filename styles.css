@@ -422,24 +422,25 @@ body { min-height: 100vh; overflow-x: hidden; }
 .hero-actions {
   position: relative; z-index: 2;
   display: flex; justify-content: center; gap: 10px;
-  margin: 16px auto 0; flex-wrap: wrap;
+  margin: 16px auto 0; max-width: 400px;
 }
 .act-btn {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 16px;
+  flex: 1 1 0; min-width: 0;
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 9px 14px;
   background: rgba(244,197,107,0.1);
   border: 1.5px solid rgba(244,197,107,0.55);
-  border-radius: 999px; cursor: pointer;
+  border-radius: 16px; cursor: pointer;
   color: var(--deepam-bright);
   transition: background .15s, border-color .15s, transform .1s;
 }
 .act-btn:hover { background: rgba(244,197,107,0.2); border-color: var(--deepam); }
 .act-btn:active { transform: scale(0.97); }
 .act-btn svg { color: var(--deepam-bright); flex-shrink: 0; }
-.act-label { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.12; }
+.act-label { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.12; min-width: 0; }
 .act-ta {
   font-family: 'Catamaran', sans-serif; font-weight: 800; font-size: 13px;
-  color: var(--chandanam); white-space: nowrap;
+  color: var(--chandanam); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
 }
 .act-en {
   font-family: 'Inter', sans-serif; font-weight: 500; font-size: 9.5px;

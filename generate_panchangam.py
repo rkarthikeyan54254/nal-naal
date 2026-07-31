@@ -482,6 +482,25 @@ def build(start, end):
         days.append(e); d += datetime.timedelta(days=1); idx += 1
     return days
 
+# Specific hand-verified links, applied to ANY day whose image matches.
+# videoId -> plays that exact YouTube video in one click (falls back to search if absent).
+# mapUrl  -> opens that exact Google Maps place (falls back to search query if absent).
+SPECIAL_AUDIO_VIDEO = {
+ "g-periyavaa.jpg": "PpGDBkOFSBI",   # Maha Periyava bhajan — user-verified
+}
+SPECIAL_TEMPLE_URL = {
+ "g-periyavaa.jpg": "https://www.google.com/maps/place/Sri+Maha+Periyava+%26+Sivan+Sar+Mani+mandapam/@10.9549375,75.8834336,8z/data=!4m10!1m2!2m1!1smaha+periyava+temple!3m6!1s0x3baa31d6b3603921:0x8a7030eecafecf9b!8m2!3d10.9549375!4d78.1905625!15sChRtYWhhIHBlcml5YXZhIHRlbXBsZVoWIhRtYWhhIHBlcml5YXZhIHRlbXBsZZIBDGhpbmR1X3RlbXBsZZoBJENoZERTVWhOTUc5blMwVkpRMEZuVFVOWk5tWmZUV3BCUlJBQuABAPoBBAgAEB8!16s%2Fg%2F11xcljw7sd",
+}
+def apply_special_links(days):
+    for e in days:
+        img = e.get("photo","")
+        base = os.path.basename(img)
+        if base in SPECIAL_AUDIO_VIDEO and e.get("audio"):
+            e["audio"]["videoId"] = SPECIAL_AUDIO_VIDEO[base]
+        if base in SPECIAL_TEMPLE_URL and e.get("temple"):
+            e["temple"]["url"] = SPECIAL_TEMPLE_URL[base]
+    return days
+
 def main():
     start = datetime.date(2026,7,17); end = datetime.date(2027,7,16)
     days = build(start,end)
@@ -509,6 +528,7 @@ def main():
                 aq,ata,aen = AUDIO[_tags[0]]
                 by[date]["audio"] = {"q": aq, "ta": ata, "en": aen}
             n+=1
+    apply_special_links(days)
     out = {
       "meta":{"tamilYear":"பரபாவ","tamilYearFull":"ஸ்ரீ பரபாவ வருடம்","kaliyugam":5127,"generated":str(datetime.date.today()),
               "engine":"Drik-ganita (Swiss Ephemeris / Lahiri) + Pambu Panchangam overrides",

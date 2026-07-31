@@ -110,32 +110,41 @@ function renderStarChip(entry) {
 }
 
 // Offer to find the nearest relevant temple via Google Maps (opens Maps; location handled there).
-let _templeQuery = null, _audioQuery = null;
+let _templeQuery = null, _templeUrl = null, _audioQuery = null, _audioVideoId = null;
 function renderTempleBtn(entry) {
   // Temple button — clean two-line label: deity name (Tamil) + action (English)
   const tb = document.getElementById("templeBtn");
-  if (entry.temple && entry.temple.q) {
-    _templeQuery = entry.temple.q;
+  if (entry.temple && (entry.temple.q || entry.temple.url)) {
+    _templeQuery = entry.temple.q || null;
+    _templeUrl = entry.temple.url || null;
     document.getElementById("templeBtnTa").textContent = entry.temple.ta || "கோயில்";
     document.getElementById("templeBtnEn").textContent = "Temple nearby";
     tb.style.display = "inline-flex";
-  } else { tb.style.display = "none"; _templeQuery = null; }
+  } else { tb.style.display = "none"; _templeQuery = null; _templeUrl = null; }
 
   // Listen button — stotram name (Tamil) + "Listen" (English)
   const lb = document.getElementById("listenBtn");
-  if (entry.audio && entry.audio.q) {
-    _audioQuery = entry.audio.q;
+  if (entry.audio && (entry.audio.q || entry.audio.videoId)) {
+    _audioQuery = entry.audio.q || null;
+    _audioVideoId = entry.audio.videoId || null;
     document.getElementById("listenBtnTa").textContent = entry.audio.ta || "பாடல்";
     document.getElementById("listenBtnEn").textContent = "Listen";
     lb.style.display = "inline-flex";
-  } else { lb.style.display = "none"; _audioQuery = null; }
+  } else { lb.style.display = "none"; _audioQuery = null; _audioVideoId = null; }
 }
 function openTempleSearch() {
+  // Prefer a hand-verified place URL; otherwise fall back to a reliable search.
+  if (_templeUrl) { window.open(_templeUrl, "_blank", "noopener"); return; }
   if (!_templeQuery) return;
   window.open("https://www.google.com/maps/search/?api=1&query=" +
               encodeURIComponent(_templeQuery + " near me"), "_blank", "noopener");
 }
 function openListen() {
+  // Prefer a hand-verified video (one-click play); otherwise fall back to search.
+  if (_audioVideoId) {
+    window.open("https://www.youtube.com/watch?v=" + _audioVideoId, "_blank", "noopener");
+    return;
+  }
   if (!_audioQuery) return;
   window.open("https://www.youtube.com/results?search_query=" +
               encodeURIComponent(_audioQuery), "_blank", "noopener");
