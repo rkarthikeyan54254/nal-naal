@@ -418,21 +418,34 @@ body { min-height: 100vh; overflow-x: hidden; }
 }
 .star-chip-deity { font-family: 'Catamaran', sans-serif; font-size: 13px; font-weight: 800; color: var(--chandanam); }
 
-/* ============ temple-finder button — refined ghost style, invites without shouting ============ */
-.temple-btn {
+/* ============ hero action buttons (temple + listen) — refined ghost chips ============ */
+.hero-actions {
   position: relative; z-index: 2;
+  display: flex; justify-content: center; gap: 10px;
+  margin: 16px auto 0; flex-wrap: wrap;
+}
+.act-btn {
   display: inline-flex; align-items: center; gap: 8px;
-  margin: 14px auto 0; padding: 9px 18px;
-  font-family: 'Catamaran', sans-serif; font-size: 13px; font-weight: 700;
-  color: var(--deepam-bright);
+  padding: 8px 16px;
   background: rgba(244,197,107,0.1);
   border: 1.5px solid rgba(244,197,107,0.55);
   border-radius: 999px; cursor: pointer;
+  color: var(--deepam-bright);
   transition: background .15s, border-color .15s, transform .1s;
 }
-.temple-btn:hover { background: rgba(244,197,107,0.2); border-color: var(--deepam); }
-.temple-btn:active { transform: scale(0.97); }
-.temple-btn svg { color: var(--deepam-bright); flex-shrink: 0; }
+.act-btn:hover { background: rgba(244,197,107,0.2); border-color: var(--deepam); }
+.act-btn:active { transform: scale(0.97); }
+.act-btn svg { color: var(--deepam-bright); flex-shrink: 0; }
+.act-label { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.12; }
+.act-ta {
+  font-family: 'Catamaran', sans-serif; font-weight: 800; font-size: 13px;
+  color: var(--chandanam); white-space: nowrap;
+}
+.act-en {
+  font-family: 'Inter', sans-serif; font-weight: 500; font-size: 9.5px;
+  letter-spacing: .04em; text-transform: uppercase; color: var(--deepam); opacity: .85;
+  white-space: nowrap;
+}
 
 /* ============ Full Panchangam panel (collapsible, quiet by design) ============ */
 .panchangam-panel {

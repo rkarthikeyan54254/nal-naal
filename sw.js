@@ -1,4 +1,4 @@
-const CACHE = "nalnaal-v23";
+const CACHE = "nalnaal-v24";
 const ASSETS = [
   "./","./index.html","./styles.css","./app.js","./emblems.js",
   "./data.json","./manifest.json","./icons/icon-96.png","./icons/icon-144.png","./icons/icon-152.png","./icons/icon-180.png","./icons/icon-192.png","./icons/icon-512.png",

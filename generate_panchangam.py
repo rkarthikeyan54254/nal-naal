@@ -255,6 +255,48 @@ TEMPLE = {
  "puthandu":  ("temple","கோயில்","temple"),
 }
 
+# Listen-finder: occasion tag -> (YouTube search query, Tamil stotram name, English name).
+# Canonical devotional works (not playlists) — the RIGHT stotram for THIS observance.
+AUDIO = {
+ "ekadasi":   ("Vishnu Sahasranamam","விஷ்ணு சஹஸ்ரநாமம்","Vishnu Sahasranamam"),
+ "onam":      ("Vishnu Sahasranamam","விஷ்ணு சஹஸ்ரநாமம்","Vishnu Sahasranamam"),
+ "pradosham": ("Lingashtakam","லிங்காஷ்டகம்","Lingashtakam"),
+ "shivaratri":("Shiva Panchakshara Stotram","சிவ பஞ்சாக்ஷரம்","Shiva Panchaksharam"),
+ "pournami":  ("Om Namah Shivaya chant","ஓம் நமசிவாய","Om Namah Shivaya"),
+ "chaturthi": ("Vinayagar Agaval","விநாயகர் அகவல்","Vinayagar Agaval"),
+ "sashti":    ("Kandha Sashti Kavasam","கந்த சஷ்டி கவசம்","Kandha Sashti Kavasam"),
+ "krithigai": ("Kandha Sashti Kavasam","கந்த சஷ்டி கவசம்","Kandha Sashti Kavasam"),
+ "karthigai": ("Thiruppugazh Murugan","திருப்புகழ்","Thiruppugazh"),
+ "amman":     ("Abirami Andhadhi","அபிராமி அந்தாதி","Abirami Andhadhi"),
+ "chevvai":   ("Abirami Andhadhi","அபிராமி அந்தாதி","Abirami Andhadhi"),
+ "pooram":    ("Thiruppavai Andal","திருப்பாவை","Thiruppavai"),
+ "krishna":   ("Krishna Bhajans Tamil","கிருஷ்ண பஜனை","Krishna bhajans"),
+ "rama":      ("Sri Rama Bhajans","ஸ்ரீ ராம பஜனை","Rama bhajans"),
+ "hanuman":   ("Hanuman Chalisa","அனுமன் சாலீசா","Hanuman Chalisa"),
+ "guru":      ("Guru Stotram","குரு ஸ்தோத்திரம்","Guru Stotram"),
+ "deepavali": ("Lakshmi Ashtakam","லக்ஷ்மி அஷ்டகம்","Lakshmi Ashtakam"),
+ "pongal":    ("Suryashtakam Surya Stotram","சூரிய அஷ்டகம்","Suryashtakam"),
+ "puthandu":  ("Ganesha Pancharatnam","கணேச பஞ்சரத்னம்","Ganesha Pancharatnam"),
+}
+
+# Per-star-deity audio for plain days, by deity image (mirrors STAR_TEMPLE).
+STAR_AUDIO = {
+ "new-vishnu.jpg":      ("Vishnu Sahasranamam","விஷ்ணு சஹஸ்ரநாமம்","Vishnu Sahasranamam"),
+ "new-shiva-nandi.jpg": ("Lingashtakam","லிங்காஷ்டகம்","Lingashtakam"),
+ "new-murugan.jpg":     ("Kandha Sashti Kavasam","கந்த சஷ்டி கவசம்","Kandha Sashti Kavasam"),
+ "new-durga.jpg":       ("Abirami Andhadhi","அபிராமி அந்தாதி","Abirami Andhadhi"),
+ "new-lakshmi.jpg":     ("Lakshmi Ashtakam","லக்ஷ்மி அஷ்டகம்","Lakshmi Ashtakam"),
+ "new-saraswati.jpg":   ("Saraswati Vandana","சரஸ்வதி வந்தனம்","Saraswati Vandana"),
+ "new-krishna.jpg":     ("Krishna Bhajans Tamil","கிருஷ்ண பஜனை","Krishna bhajans"),
+ "new-rama.jpg":        ("Sri Rama Bhajans","ஸ்ரீ ராம பஜனை","Rama bhajans"),
+ "new-hanuman.jpg":     ("Hanuman Chalisa","அனுமன் சாலீசா","Hanuman Chalisa"),
+ "new-ganesha.jpg":     ("Vinayagar Agaval","விநாயகர் அகவல்","Vinayagar Agaval"),
+ "new-aandaal.jpg":     ("Thiruppavai Andal","திருப்பாவை","Thiruppavai"),
+ "new-naga.jpg":        ("Nagar Stotram","நாக ஸ்தோத்திரம்","Naga Stotram"),
+ "new-surya.jpg":       ("Suryashtakam Surya Stotram","சூரிய அஷ்டகம்","Suryashtakam"),
+ "new-periyava.jpg":    ("Maha Periyava Bhajan","மகா பெரியவா பஜனை","Maha Periyava bhajan"),
+}
+
 # ---- Fixed-date major festivals (specific calendar days, verified from Tamil panchangam sources) ----
 # Each: date -> (tag, tamil, english, image_key). These are added as festival occasions.
 FIXED_FESTIVALS = {
@@ -351,6 +393,9 @@ def build(start, end):
             if ftag in TEMPLE:
                 tq, tta, ten = TEMPLE[ftag]
                 e["temple"] = {"q": tq, "ta": tta, "en": ten}
+            if ftag in AUDIO:
+                aq, ata, aen = AUDIO[ftag]
+                e["audio"] = {"q": aq, "ta": ata, "en": aen}
         elif occ:
             lead = min(occ, key=lambda o: PRIO.index(o[0]) if o[0] in PRIO else 99)
             e["tags"] = [o[0] for o in occ]
@@ -367,6 +412,9 @@ def build(start, end):
             if lead[0] in TEMPLE:
                 tq, tta, ten = TEMPLE[lead[0]]
                 e["temple"] = {"q": tq, "ta": tta, "en": ten}
+            if lead[0] in AUDIO:
+                aq, ata, aen = AUDIO[lead[0]]
+                e["audio"] = {"q": aq, "ta": ata, "en": aen}
         else:
             e["tags"] = []
             # non-occasion day: show the star's presiding deity + a worthy blessing
@@ -402,6 +450,9 @@ def build(start, end):
                 if _base in STAR_TEMPLE:
                     tq,tta,ten = STAR_TEMPLE[_base]
                     e["temple"] = {"q": tq, "ta": tta, "en": ten}
+                if _base in STAR_AUDIO:
+                    aq,ata,aen = STAR_AUDIO[_base]
+                    e["audio"] = {"q": aq, "ta": ata, "en": aen}
         days.append(e); d += datetime.timedelta(days=1); idx += 1
     return days
 
@@ -420,7 +471,7 @@ def main():
         if date in by:
             # an override promotes a day to a festival — clear any daily-blessing residue
             if "tags" in patch or "title" in patch:
-                for k in ("daily","photoCredit","starDeity","temple"):
+                for k in ("daily","photoCredit","starDeity","temple","audio"):
                     by[date].pop(k, None)
             by[date].update(patch)
             # recompute the temple link from the override's lead tag
@@ -428,6 +479,9 @@ def main():
             if _tags and _tags[0] in TEMPLE:
                 tq,tta,ten = TEMPLE[_tags[0]]
                 by[date]["temple"] = {"q": tq, "ta": tta, "en": ten}
+            if _tags and _tags[0] in AUDIO:
+                aq,ata,aen = AUDIO[_tags[0]]
+                by[date]["audio"] = {"q": aq, "ta": ata, "en": aen}
             n+=1
     out = {
       "meta":{"tamilYear":"பரபாவ","tamilYearFull":"ஸ்ரீ பரபாவ வருடம்","kaliyugam":5127,"generated":str(datetime.date.today()),

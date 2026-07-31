@@ -110,20 +110,35 @@ function renderStarChip(entry) {
 }
 
 // Offer to find the nearest relevant temple via Google Maps (opens Maps; location handled there).
-let _templeQuery = null;
+let _templeQuery = null, _audioQuery = null;
 function renderTempleBtn(entry) {
-  const btn = document.getElementById("templeBtn");
-  if (!entry.temple || !entry.temple.q) { btn.style.display = "none"; _templeQuery = null; return; }
-  _templeQuery = entry.temple.q;
-  document.getElementById("templeBtnLabel").textContent =
-    "அருகில் " + (entry.temple.ta || "கோயில்") + " · Nearby " + (entry.temple.en || "temple");
-  btn.style.display = "inline-flex";
+  // Temple button — clean two-line label: deity name (Tamil) + action (English)
+  const tb = document.getElementById("templeBtn");
+  if (entry.temple && entry.temple.q) {
+    _templeQuery = entry.temple.q;
+    document.getElementById("templeBtnTa").textContent = entry.temple.ta || "கோயில்";
+    document.getElementById("templeBtnEn").textContent = "Temple nearby";
+    tb.style.display = "inline-flex";
+  } else { tb.style.display = "none"; _templeQuery = null; }
+
+  // Listen button — stotram name (Tamil) + "Listen" (English)
+  const lb = document.getElementById("listenBtn");
+  if (entry.audio && entry.audio.q) {
+    _audioQuery = entry.audio.q;
+    document.getElementById("listenBtnTa").textContent = entry.audio.ta || "பாடல்";
+    document.getElementById("listenBtnEn").textContent = "Listen";
+    lb.style.display = "inline-flex";
+  } else { lb.style.display = "none"; _audioQuery = null; }
 }
 function openTempleSearch() {
   if (!_templeQuery) return;
-  const url = "https://www.google.com/maps/search/?api=1&query=" +
-              encodeURIComponent(_templeQuery + " near me");
-  window.open(url, "_blank", "noopener");
+  window.open("https://www.google.com/maps/search/?api=1&query=" +
+              encodeURIComponent(_templeQuery + " near me"), "_blank", "noopener");
+}
+function openListen() {
+  if (!_audioQuery) return;
+  window.open("https://www.youtube.com/results?search_query=" +
+              encodeURIComponent(_audioQuery), "_blank", "noopener");
 }
 
 // Full panchangam panel: sunrise/sunset, Rahukaalam, Yamagandam, Kuligai, Nalla Neram,
@@ -387,6 +402,8 @@ async function init() {
   document.getElementById("todayBtn").addEventListener("click", goToday);
   var _tb = document.getElementById("templeBtn");
   if (_tb) _tb.addEventListener("click", openTempleSearch);
+  var _lb = document.getElementById("listenBtn");
+  if (_lb) _lb.addEventListener("click", openListen);
   document.getElementById("jumpDate").addEventListener("change", e => jumpTo(e.target.value));
   var _jb = document.getElementById("jumpBtn");
   if (_jb) _jb.addEventListener("click", function() {
