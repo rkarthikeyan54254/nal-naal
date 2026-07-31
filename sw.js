@@ -1,9 +1,9 @@
-const CACHE = "nalnaal-v24";
+const CACHE = "nalnaal-v25";
 const ASSETS = [
-  "./","./index.html","./styles.css","./app.js","./emblems.js",
-  "./data.json","./manifest.json","./icons/icon-96.png","./icons/icon-144.png","./icons/icon-152.png","./icons/icon-180.png","./icons/icon-192.png","./icons/icon-512.png",
-  "./images/new-surya.jpg","./images/new-naga.jpg","./images/new-deepam.jpg","./images/new-deepavali.jpg","./images/new-pongal.jpg","./images/new-karthigai-deepam.jpg","./images/new-vishnu.jpg","./images/new-shiva-nandi.jpg","./images/new-bairava.jpg","./images/new-durga.jpg","./images/new-aandaal.jpg","./images/new-murugan.jpg","./images/new-ganesha.jpg","./images/new-lakshmi.jpg","./images/new-krishna.jpg","./images/new-rama.jpg","./images/new-hanuman.jpg","./images/new-saraswati.jpg","./images/new-pournami.jpg","./images/new-periyava.jpg"
-];
+  "./","./index.html","./styles.css","./app.js","./emblems.js","./data.json","./manifest.json",
+  "./icons/icon-96.png","./icons/icon-144.png","./icons/icon-152.png","./icons/icon-180.png","./icons/icon-192.png","./icons/icon-512.png","./icons/badge-96.png",
+  "./images/g-aiyappa.jpg","./images/g-balaji.jpg","./images/g-bhairavar.jpg","./images/g-deepavali.jpg","./images/g-durga.jpg","./images/g-ganesh.jpg","./images/g-hanumar.jpg","./images/g-hayagreevar.jpg","./images/g-krishna.jpg","./images/g-meenakshi.jpg","./images/g-murugar.jpg","./images/g-narasimhar.jpg","./images/g-periyavaa.jpg","./images/g-pournami.jpg","./images/g-rama.jpg","./images/g-saraswathi.jpg","./images/g-shiva.jpg","./images/g-vishnu.jpg","./images/new-aandaal.jpg","./images/new-deepam.jpg","./images/new-karthigai-deepam.jpg","./images/new-lakshmi.jpg","./images/new-naga.jpg","./images/new-pongal.jpg","./images/new-surya.jpg"
+]
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
   self.skipWaiting();
