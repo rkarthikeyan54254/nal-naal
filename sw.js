@@ -1,4 +1,4 @@
-const CACHE = "nalnaal-v20";
+const CACHE = "nalnaal-v21";
 const ASSETS = [
   "./","./index.html","./styles.css","./app.js","./emblems.js",
   "./data.json","./manifest.json","./icons/icon-96.png","./icons/icon-144.png","./icons/icon-152.png","./icons/icon-180.png","./icons/icon-192.png","./icons/icon-512.png",
@@ -75,7 +75,7 @@ self.addEventListener("push", e => {
   const opts = {
     body: d.body || "",
     icon: d.icon || "./icons/icon-192.png",
-    badge: d.badge || "./icons/icon-96.png",
+    badge: d.badge || "./icons/badge-96.png",
     data: { url: d.url || "https://nalnaal.netlify.app/" },
     vibrate: [80, 40, 80]
   };
