@@ -81,6 +81,7 @@ function renderHeroForDate(dateStr) {
     document.getElementById("heroCard").classList.toggle("is-daily", !!entry.daily);
     renderStarChip(entry);
     renderTempleBtn(entry);
+    renderPanchangam(entry);
   } else {
     document.getElementById("niche").classList.remove("has-photo");
     document.getElementById("niche").innerHTML = emblemSvg("generic");
@@ -124,6 +125,53 @@ function openTempleSearch() {
               encodeURIComponent(_templeQuery + " near me");
   window.open(url, "_blank", "noopener");
 }
+
+// Full panchangam panel: sunrise/sunset, Rahukaalam, Yamagandam, Kuligai, Nalla Neram,
+// Gowri, Chandrashtamam, and a Muhurtham note. Kept collapsed by default to protect the calm.
+function renderPanchangam(entry) {
+  const panel = document.getElementById("panchangamPanel");
+  const body = document.getElementById("ppBody");
+  const b = entry && entry.bands;
+  if (!b) { if (panel) panel.style.display = "none"; return; }
+  panel.style.display = "block";
+  const range = a => a ? a[0] + " – " + a[1] : "—";
+  const nalla = (b.nallaNeram || []).map(x => x[0] + "–" + x[1]).join("  ·  ") || "—";
+  // "inauspicious" bands get a warning tint; nalla neram gets an auspicious tint
+  let html = "";
+  html += '<div class="pp-suntimes">' +
+            '<span><span class="pp-ic">☀</span> உதயம் <b>' + b.sunrise + '</b></span>' +
+            '<span>அஸ்தமனம் <b>' + b.sunset + '</b> <span class="pp-ic">☾</span></span>' +
+          '</div>';
+  html += '<div class="pp-grid">';
+  html += ppRow("ராகுகாலம்", "Rahu kaalam", range(b.rahu), "avoid");
+  html += ppRow("எமகண்டம்", "Yama gandam", range(b.yama), "avoid");
+  html += ppRow("குளிகை", "Kuligai", range(b.kuligai), "avoid");
+  html += ppRow("நல்ல நேரம்", "Nalla neram", nalla, "good");
+  html += ppRow("சந்திராஷ்டமம்", "Chandrashtamam", b.chandrashtamam || "—", "note");
+  html += '</div>';
+  // Muhurtham note
+  if (entry.muhurtham) {
+    html += '<div class="pp-muhurtham">✦ சுப முகூர்த்த நாள் <span class="en">· An auspicious day for functions</span></div>';
+  }
+  // Gowri Panchangam mini-table (day)
+  if (b.gowri && b.gowri.length) {
+    html += '<div class="pp-gowri-title">கௌரி பஞ்சாங்கம் <span class="en">· Gowri (daytime)</span></div>';
+    html += '<div class="pp-gowri">';
+    b.gowri.forEach(g => {
+      html += '<div class="pp-gowri-row ' + (g[3] === "good" ? "g" : "b") + '">' +
+                '<span class="pgw-time">' + g[0] + '–' + g[1] + '</span>' +
+                '<span class="pgw-name">' + g[2] + '</span></div>';
+    });
+    html += '</div>';
+  }
+  body.innerHTML = html;
+}
+function ppRow(ta, en, val, kind) {
+  return '<div class="pp-row ' + kind + '">' +
+           '<span class="pp-label">' + ta + '<span class="en">' + en + '</span></span>' +
+           '<span class="pp-value">' + val + '</span></div>';
+}
+
 
 function shiftDate(delta) { const d = new Date(viewedDate); d.setDate(d.getDate()+delta); viewedDate = midnight(d); renderHeroForDate(toStr(viewedDate)); }
 function goToday() { viewedDate = midnight(new Date()); renderHeroForDate(todayStr()); }
@@ -243,6 +291,66 @@ function wireSwipe() {
   }, {passive:true});
 }
 
+// ============ Month grid view ============
+let monthAnchor = null;
+function openMonth(fromDate) {
+  monthAnchor = midnight(fromDate || new Date());
+  renderMonth();
+  const ov = document.getElementById("monthOverlay");
+  ov.classList.add("open"); ov.setAttribute("aria-hidden", "false");
+}
+function closeMonth() {
+  const ov = document.getElementById("monthOverlay");
+  ov.classList.remove("open"); ov.setAttribute("aria-hidden", "true");
+}
+function shiftMonth(delta) {
+  monthAnchor = new Date(monthAnchor.getFullYear(), monthAnchor.getMonth() + delta, 1);
+  renderMonth();
+}
+function renderMonth() {
+  const grid = document.getElementById("monthGrid");
+  const y = monthAnchor.getFullYear(), m = monthAnchor.getMonth();
+  const first = new Date(y, m, 1);
+  const startPad = first.getDay(); // 0=Sun
+  const daysInMonth = new Date(y, m + 1, 0).getDate();
+  const byDate = {}; DATA.days.forEach(d => byDate[d.date] = d);
+  // Title: Gregorian month + the dominant Tamil month(s) in it
+  const gmName = first.toLocaleDateString("en-US", { month: "long", year: "numeric" });
+  const midEntry = byDate[toStr(new Date(y, m, 15))];
+  const taMonth = midEntry ? midEntry.tamilMonth : "";
+  document.getElementById("monthTitle").innerHTML =
+    (taMonth ? '<span class="mt-ta">' + taMonth + '</span>' : '') +
+    '<span class="mt-greg">' + gmName + '</span>';
+  let html = "";
+  for (let i = 0; i < startPad; i++) html += '<div class="mcell empty"></div>';
+  const todayS = todayStr();
+  for (let dd = 1; dd <= daysInMonth; dd++) {
+    const ds = toStr(new Date(y, m, dd));
+    const e = byDate[ds];
+    const isFestival = e && e.title && !e.daily;
+    const isMuh = e && e.muhurtham;
+    const isToday = ds === todayS;
+    let cls = "mcell";
+    if (isToday) cls += " today";
+    if (isFestival) cls += " has-festival";
+    html += '<button class="' + cls + '" data-date="' + ds + '">' +
+              '<span class="mc-day">' + dd + '</span>' +
+              (e ? '<span class="mc-ta">' + e.tamilDay + '</span>' : '') +
+              '<span class="mc-dots">' +
+                (isFestival ? '<i class="mc-dot festival"></i>' : '') +
+                (isMuh ? '<i class="mc-dot muhurtham"></i>' : '') +
+              '</span>' +
+            '</button>';
+  }
+  grid.innerHTML = html;
+  grid.querySelectorAll(".mcell[data-date]").forEach(cell => {
+    cell.addEventListener("click", () => {
+      jumpTo(cell.getAttribute("data-date"));
+      closeMonth();
+    });
+  });
+}
+
 async function init() {
   try {
     const res = await fetch("data.json", { cache: "no-cache" });
@@ -290,6 +398,13 @@ async function init() {
   document.getElementById("sheetBackdrop").addEventListener("click", closeSheet);
   document.getElementById("enableNotifs").addEventListener("click", enableNotifications);
   document.getElementById("leadTime").addEventListener("change", e => { prefs.leadDays = Number(e.target.value); savePrefs(prefs); });
+
+  // Month view
+  document.getElementById("monthViewBtn").addEventListener("click", () => openMonth(viewedDate));
+  document.getElementById("monthClose").addEventListener("click", closeMonth);
+  document.getElementById("monthPrev").addEventListener("click", () => shiftMonth(-1));
+  document.getElementById("monthNext").addEventListener("click", () => shiftMonth(1));
+  document.getElementById("monthOverlay").addEventListener("click", e => { if (e.target.id === "monthOverlay") closeMonth(); });
 
   document.addEventListener("keydown", e => {
     if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT") return;

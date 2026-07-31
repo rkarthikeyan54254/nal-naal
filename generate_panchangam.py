@@ -52,6 +52,68 @@ def tamil_md(y,m,d):
         probe = p; n += 1
     return TAMIL_MONTHS[r], TAMIL_MONTHS_EN[r], n
 
+# ============ Daily time-bands (Rahukaalam etc.), Gowri, Chandrashtamam ============
+CHENNAI_LAT, CHENNAI_LON = 13.0827, 80.2707
+_GEO = (CHENNAI_LON, CHENNAI_LAT, 0.0)
+
+def sun_events(y, m, d):
+    """(sunrise, sunset) as IST decimal hours at Chennai."""
+    jd0 = swe.julday(y, m, d, 0.0)
+    r = swe.rise_trans(jd0 - 0.5, swe.SUN, swe.CALC_RISE | swe.BIT_DISC_CENTER, _GEO)[1][0]
+    s = swe.rise_trans(jd0 - 0.5, swe.SUN, swe.CALC_SET | swe.BIT_DISC_CENTER, _GEO)[1][0]
+    to = lambda jd: (swe.revjul(jd)[3] + 5.5) % 24
+    return to(r), to(s)
+
+def _hm(h):
+    h %= 24
+    return f"{int(h):02d}:{int((h % 1) * 60):02d}"
+
+# weekday (python Mon=0..Sun=6) -> which of 8 day-segments the band occupies
+_RAHU = {6: 8, 0: 2, 1: 7, 2: 5, 3: 6, 4: 4, 5: 3}
+_YAMA = {6: 5, 0: 4, 1: 3, 2: 2, 3: 1, 4: 7, 5: 6}
+_KULI = {6: 7, 0: 6, 1: 5, 2: 4, 3: 3, 4: 2, 5: 1}
+
+# Gowri Panchangam day sequence per weekday (8 periods from sunrise)
+_GOWRI_DAY = {
+ 6: ['உதி','அமிர்தம்','ரோகம்','லாபம்','தனம்','சுகம்','காந்தம்','சோரம்'],
+ 0: ['அமிர்தம்','ரோகம்','லாபம்','தனம்','சுகம்','காந்தம்','சோரம்','உதி'],
+ 1: ['ரோகம்','லாபம்','தனம்','சுகம்','காந்தம்','சோரம்','உதி','அமிர்தம்'],
+ 2: ['லாபம்','தனம்','சுகம்','காந்தம்','சோரம்','உதி','அமிர்தம்','ரோகம்'],
+ 3: ['தனம்','சுகம்','காந்தம்','சோரம்','உதி','அமிர்தம்','ரோகம்','லாபம்'],
+ 4: ['சுகம்','காந்தம்','சோரம்','உதி','அமிர்தம்','ரோகம்','லாபம்','தனம்'],
+ 5: ['காந்தம்','சோரம்','உதி','அமிர்தம்','ரோகம்','லாபம்','தனம்','சுகம்'],
+}
+_GOWRI_GOOD = {'அமிர்தம்','சுகம்','லாபம்','தனம்','உதி'}
+
+_RASIS_TA = ['மேஷம்','ரிஷபம்','மிதுனம்','கடகம்','சிம்மம்','கன்னி',
+             'துலாம்','விருச்சிகம்','தனுசு','மகரம்','கும்பம்','மீனம்']
+
+def time_bands(y, m, d):
+    sr, ss = sun_events(y, m, d)
+    seg = (ss - sr) / 8
+    wd = datetime.date(y, m, d).weekday()
+    def band(n):
+        st = sr + (n - 1) * seg
+        return [_hm(st), _hm(st + seg)]
+    # Gowri periods (day) + the good "Nalla Neram" windows
+    gowri = []
+    good = []
+    for i, name in enumerate(_GOWRI_DAY[wd]):
+        st = sr + i * seg
+        g = "good" if name in _GOWRI_GOOD else "bad"
+        gowri.append([_hm(st), _hm(st + seg), name, g])
+        if g == "good":
+            good.append([_hm(st), _hm(st + seg)])
+    # Chandrashtamam: 8th rasi from Moon's rasi at ~6am
+    moon = swe.calc_ut(swe.julday(y, m, d, 0.5), swe.MOON, FLAG)[0][0]
+    chandra = _RASIS_TA[(int(moon // 30) + 7) % 12]
+    return {
+        "sunrise": _hm(sr), "sunset": _hm(ss),
+        "rahu": band(_RAHU[wd]), "yama": band(_YAMA[wd]), "kuligai": band(_KULI[wd]),
+        "nallaNeram": good[:3], "gowri": gowri, "chandrashtamam": chandra
+    }
+
+
 PHOTO = {
  "ekadasi":("images/new-vishnu.jpg","Vishnu · Perumal"),
  "pradosham":("images/new-shiva-nandi.jpg","Shiva & Nandi"),
@@ -255,6 +317,16 @@ def build(start, end):
              "weekdayFull":WEEKDAYS_TA[d.weekday()],"nakshatra":nta,"nakshatraEn":nen,
              "tithi":tta,"confidence":"derived",
              "source":"Drik-ganita (Swiss Ephemeris, Lahiri ayanamsa)"}
+        e["bands"] = time_bands(d.year, d.month, d.day)
+        # Muhurtham (auspicious for weddings/functions): favourable nakshatram + tithi + weekday.
+        # Classical marriage-friendly stars, waxing-friendly tithis, avoiding Tue/Sat & inauspicious tithis.
+        MUHURTHAM_STARS = {"Rohini","Mrigasheersham","Magam","Uttiram","Astham","Swathi",
+                           "Anusham","Moolam","Uttiradam","Thiruvonam","Uttirattathi","Revathi"}
+        _good_tithi = ti not in (3,8,13,14,18,23,28,29)  # avoid Chaturthi/Navami/Chaturdashi/Amavasai/etc
+        _good_wd = d.weekday() not in (1,5)  # avoid Tue, Sat
+        if nen in MUHURTHAM_STARS and _good_tithi and _good_wd and me not in ("Aadi","Purattasi"):
+            # Aadi & Purattasi traditionally avoided for muhurthams
+            e["muhurtham"] = True
         # star deity for this day (every day gets one)
         star = NAK_DEITY.get(nen)
         # Always record the star deity so the UI can show it even on festival days.
