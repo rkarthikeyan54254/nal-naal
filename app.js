@@ -163,6 +163,7 @@ function renderPanchangam(entry) {
                 '<span class="pgw-name">' + g[2] + '</span></div>';
     });
     html += '</div>';
+    html += '<p class="pp-note">குறிப்பு: நல்ல நேரத்திலும் ராகுகாலம், எமகண்டம், குளிகை நேரத்தைத் தவிர்க்கவும்.<span class="en">Avoid Rahu, Yama & Kuligai even during a good Gowri period.</span></p>';
   }
   body.innerHTML = html;
 }

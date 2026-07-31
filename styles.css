@@ -576,3 +576,10 @@ body { min-height: 100vh; overflow-x: hidden; }
 .ml-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-left: 6px; }
 .ml-dot.festival { background: var(--sindooram); }
 .ml-dot.muhurtham { background: var(--deepam); }
+
+.pp-note {
+  margin: 12px 2px 0; padding: 8px 12px; border-radius: 9px;
+  background: rgba(163,22,33,0.05);
+  font-family: 'Catamaran', sans-serif; font-size: 11.5px; line-height: 1.4; color: var(--sindooram-deep);
+}
+.pp-note .en { display: block; font-family: 'Inter', sans-serif; font-size: 10px; color: var(--ink-soft); margin-top: 2px; }
