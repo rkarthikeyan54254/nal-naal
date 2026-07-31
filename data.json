@@ -4666,25 +4666,25 @@
    "starDeity": "ஹயக்ரீவர்",
    "starCredit": "Hayagreeva — star lord of Thiruvonam",
    "tags": [
-    "krishna"
+    "onam"
    ],
-   "title": "கிருஷ்ண ஜயந்தி",
-   "titleEn": "Krishna Jayanthi",
-   "icon": "krishna",
-   "photo": "images/g-krishna.jpg",
-   "oneLiner": "கண்ணன் அவதரித்த கிருஷ்ண ஜெயந்தி புனித நாள்.",
-   "oneLinerEn": "Krishna Jayanthi — the birth of Lord Krishna.",
+   "title": "திருவோணம் (ஓணம்)",
+   "titleEn": "Thiruvonam (Onam)",
+   "icon": "onam",
+   "photo": "images/g-vishnu.jpg",
+   "oneLiner": "மகாபலியை வரவேற்கும் திருவோண புண்ணிய நாள்.",
+   "oneLinerEn": "Thiruvonam — the sacred Onam day of Mahabali's return.",
    "always": true,
    "major": true,
    "temple": {
-    "q": "Krishna temple",
-    "ta": "கிருஷ்ணன் கோயில்",
-    "en": "Krishna temple"
+    "q": "Perumal Vishnu temple",
+    "ta": "பெருமாள் கோயில்",
+    "en": "Perumal temple"
    },
    "audio": {
-    "q": "Krishna Bhajans Tamil",
-    "ta": "கிருஷ்ண பஜனை",
-    "en": "Krishna bhajans"
+    "q": "Vishnu Sahasranamam",
+    "ta": "விஷ்ணு சஹஸ்ரநாமம்",
+    "en": "Vishnu Sahasranamam"
    }
   },
   {
@@ -4782,26 +4782,23 @@
    "starImage": "images/g-vishnu.jpg",
    "starDeity": "அனந்த சயனர்",
    "starCredit": "Anantha Padmanabha — star lord of Avittam",
-   "tags": [
-    "chaturthi"
-   ],
-   "title": "விநாயகர் சதுர்த்தி",
-   "titleEn": "Vinayaka Chaturthi",
-   "icon": "chaturthi",
-   "photo": "images/g-ganesh.jpg",
-   "oneLiner": "விநாயகரை வழிபட்டு இடையூறுகள் நீங்கும் சதுர்த்தி.",
-   "oneLinerEn": "Chaturthi — worship Ganesha to clear all obstacles.",
-   "always": true,
-   "major": true,
+   "tags": [],
+   "photo": "images/g-vishnu.jpg",
+   "photoCredit": "Anantha Padmanabha — star lord of Avittam",
+   "title": "அனந்த சயனர் அருள் நாள்",
+   "titleEn": "அனந்த சயனர்'s blessing",
+   "oneLiner": "அனந்த சயனர் துணையுடன் இந்நாள் அமைதியாக அமையட்டும்.",
+   "oneLinerEn": "May Anantha Padmanabha keep this day calm and full of grace.",
+   "daily": true,
    "temple": {
-    "q": "Vinayagar Ganesha temple",
-    "ta": "விநாயகர் கோயில்",
-    "en": "Vinayagar temple"
+    "q": "Perumal Vishnu temple",
+    "ta": "பெருமாள் கோயில்",
+    "en": "Perumal temple"
    },
    "audio": {
-    "q": "Vinayagar Agaval",
-    "ta": "விநாயகர் அகவல்",
-    "en": "Vinayagar Agaval"
+    "q": "Vishnu Sahasranamam",
+    "ta": "விஷ்ணு சஹஸ்ரநாமம்",
+    "en": "Vishnu Sahasranamam"
    }
   },
   {
@@ -5711,11 +5708,12 @@
    ],
    "title": "கிருஷ்ண ஜயந்தி",
    "titleEn": "Krishna Jayanthi",
-   "icon": "perumal",
+   "icon": "krishna",
    "photo": "images/g-krishna.jpg",
    "oneLiner": "கண்ணன் அவதரித்த கிருஷ்ண ஜெயந்தி புனித நாள்.",
    "oneLinerEn": "Krishna Jayanthi — the birth of Lord Krishna.",
-   "always": false,
+   "always": true,
+   "major": true,
    "temple": {
     "q": "Krishna temple",
     "ta": "கிருஷ்ணன் கோயில்",
@@ -5822,26 +5820,23 @@
    "starImage": "images/g-shiva.jpg",
    "starDeity": "சிவன்",
    "starCredit": "Shiva — star lord of Mrigasheersham",
-   "tags": [
-    "onam"
-   ],
-   "title": "திருவோணம் (ஓணம்)",
-   "titleEn": "Thiruvonam (Onam)",
-   "icon": "onam",
-   "photo": "images/g-vishnu.jpg",
-   "oneLiner": "மகாபலியை வரவேற்கும் திருவோண புண்ணிய நாள்.",
-   "oneLinerEn": "Thiruvonam — the sacred Onam day of Mahabali's return.",
-   "always": true,
-   "major": true,
+   "tags": [],
+   "photo": "images/g-shiva.jpg",
+   "photoCredit": "Shiva — star lord of Mrigasheersham",
+   "title": "சிவன் அருள் நாள்",
+   "titleEn": "சிவன்'s blessing",
+   "oneLiner": "இன்று சிவன் அருள் நிறை நாள். ஒரு விளக்கேற்றி வணங்குங்கள்.",
+   "oneLinerEn": "Today is blessed by Shiva. Light a lamp and offer a quiet prayer.",
+   "daily": true,
    "temple": {
-    "q": "Perumal Vishnu temple",
-    "ta": "பெருமாள் கோயில்",
-    "en": "Perumal temple"
+    "q": "Shiva temple",
+    "ta": "சிவன் கோயில்",
+    "en": "Shiva temple"
    },
    "audio": {
-    "q": "Vishnu Sahasranamam",
-    "ta": "விஷ்ணு சஹஸ்ரநாமம்",
-    "en": "Vishnu Sahasranamam"
+    "q": "Lingashtakam",
+    "ta": "லிங்காஷ்டகம்",
+    "en": "Lingashtakam"
    }
   },
   {
@@ -6850,23 +6845,26 @@
    "starImage": "images/g-vishnu.jpg",
    "starDeity": "சக்கரத்தாழ்வார்",
    "starCredit": "Chakrathazhwar — star lord of Chithirai",
-   "tags": [],
-   "photo": "images/g-vishnu.jpg",
-   "photoCredit": "Chakrathazhwar — star lord of Chithirai",
-   "title": "சக்கரத்தாழ்வார் அருள் நாள்",
-   "titleEn": "சக்கரத்தாழ்வார்'s blessing",
-   "oneLiner": "இந்நாள் சக்கரத்தாழ்வார் அருளால் சுபமாக அமையட்டும்.",
-   "oneLinerEn": "May Chakrathazhwar's grace make this an auspicious day.",
-   "daily": true,
+   "tags": [
+    "chaturthi"
+   ],
+   "title": "விநாயகர் சதுர்த்தி",
+   "titleEn": "Vinayaka Chaturthi",
+   "icon": "chaturthi",
+   "photo": "images/g-ganesh.jpg",
+   "oneLiner": "விநாயகரை வழிபட்டு இடையூறுகள் நீங்கும் சதுர்த்தி.",
+   "oneLinerEn": "Chaturthi — worship Ganesha to clear all obstacles.",
+   "always": true,
+   "major": true,
    "temple": {
-    "q": "Perumal Vishnu temple",
-    "ta": "பெருமாள் கோயில்",
-    "en": "Perumal temple"
+    "q": "Vinayagar Ganesha temple",
+    "ta": "விநாயகர் கோயில்",
+    "en": "Vinayagar temple"
    },
    "audio": {
-    "q": "Vishnu Sahasranamam",
-    "ta": "விஷ்ணு சஹஸ்ரநாமம்",
-    "en": "Vishnu Sahasranamam"
+    "q": "Vinayagar Agaval",
+    "ta": "விநாயகர் அகவல்",
+    "en": "Vinayagar Agaval"
    }
   },
   {

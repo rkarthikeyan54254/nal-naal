@@ -311,9 +311,9 @@ STAR_AUDIO = {
 # Each: date -> (tag, tamil, english, image_key). These are added as festival occasions.
 FIXED_FESTIVALS = {
  # 2026
- "2026-08-26": ("krishna","கிருஷ்ண ஜயந்தி","Krishna Jayanthi","krishna"),
- "2026-08-27": ("chaturthi","விநாயகர் சதுர்த்தி","Vinayaka Chaturthi","chaturthi"),
- "2026-09-05": ("onam","திருவோணம் (ஓணம்)","Thiruvonam (Onam)","onam"),
+ "2026-09-04": ("krishna","கிருஷ்ண ஜயந்தி","Krishna Jayanthi","krishna"),
+ "2026-09-14": ("chaturthi","விநாயகர் சதுர்த்தி","Vinayaka Chaturthi","chaturthi"),
+ "2026-08-26": ("onam","திருவோணம் (ஓணம்)","Thiruvonam (Onam)","onam"),
  "2026-10-11": ("amman","நவராத்திரி ஆரம்பம்","Navaratri begins","amman"),
  "2026-10-19": ("amman","சரஸ்வதி பூஜை","Saraswati Pooja","guru"),
  "2026-10-20": ("amman","விஜயதசமி · ஆயுத பூஜை","Vijayadashami · Ayudha Pooja","amman"),
