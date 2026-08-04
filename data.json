@@ -3,7 +3,7 @@
   "tamilYear": "பரபாவ",
   "tamilYearFull": "ஸ்ரீ பரபாவ வருடம்",
   "kaliyugam": 5127,
-  "generated": "2026-07-31",
+  "generated": "2026-08-04",
   "engine": "Drik-ganita (Swiss Ephemeris / Lahiri) + Pambu Panchangam overrides",
   "monthAnchors": [
    {
@@ -4089,25 +4089,26 @@
    "starImage": "images/g-periyavaa.jpg",
    "starDeity": "மகா பெரியவா",
    "starCredit": "Kanchi Maha Periyava — star lord of Anusham",
-   "tags": [],
-   "photo": "images/g-periyavaa.jpg",
-   "photoCredit": "Kanchi Maha Periyava — star lord of Anusham",
-   "title": "மகா பெரியவா அருள் நாள்",
-   "titleEn": "மகா பெரியவா's blessing",
-   "oneLiner": "இன்று மகா பெரியவா அருள் நிறை நாள். ஒரு விளக்கேற்றி வணங்குங்கள்.",
-   "oneLinerEn": "Today is blessed by Kanchi Maha Periyava. Light a lamp and offer a quiet prayer.",
-   "daily": true,
+   "tags": [
+    "varalakshmi"
+   ],
+   "title": "வரலட்சுமி விரதம்",
+   "titleEn": "Varalakshmi Vratham",
+   "icon": "varalakshmi",
+   "photo": "images/new-lakshmi.jpg",
+   "oneLiner": "செல்வம் அருளும் வரலட்சுமியை வழிபடும் விரதம்.",
+   "oneLinerEn": "Varalakshmi Vratham — worship of the boon-granting Lakshmi.",
+   "always": true,
+   "major": true,
    "temple": {
-    "q": "Kanchi Mutt",
-    "ta": "காஞ்சி மடம்",
-    "en": "Kanchi Mutt",
-    "url": "https://www.google.com/maps/place/Sri+Maha+Periyava+%26+Sivan+Sar+Mani+mandapam/@10.9549375,75.8834336,8z/data=!4m10!1m2!2m1!1smaha+periyava+temple!3m6!1s0x3baa31d6b3603921:0x8a7030eecafecf9b!8m2!3d10.9549375!4d78.1905625!15sChRtYWhhIHBlcml5YXZhIHRlbXBsZVoWIhRtYWhhIHBlcml5YXZhIHRlbXBsZZIBDGhpbmR1X3RlbXBsZZoBJENoZERTVWhOTUc5blMwVkpRMEZuVFVOWk5tWmZUV3BCUlJBQuABAPoBBAgAEB8!16s%2Fg%2F11xcljw7sd"
+    "q": "Lakshmi temple",
+    "ta": "லட்சுமி கோயில்",
+    "en": "Lakshmi temple"
    },
    "audio": {
-    "q": "Maha Periyava Bhajan",
-    "ta": "மகா பெரியவா பஜனை",
-    "en": "Maha Periyava bhajan",
-    "videoId": "PpGDBkOFSBI"
+    "q": "Sri Varalakshmi Ashtakam",
+    "ta": "வரலட்சுமி அஷ்டகம்",
+    "en": "Varalakshmi Ashtakam"
    }
   },
   {
@@ -4782,16 +4783,19 @@
    "starImage": "images/g-vishnu.jpg",
    "starDeity": "அனந்த சயனர்",
    "starCredit": "Anantha Padmanabha — star lord of Avittam",
-   "tags": [],
+   "tags": [
+    "upakarma"
+   ],
+   "title": "ஆவணி அவிட்டம் · உபாகர்மம்",
+   "titleEn": "Avani Avittam (Upakarma)",
+   "icon": "upakarma",
    "photo": "images/g-vishnu.jpg",
-   "photoCredit": "Anantha Padmanabha — star lord of Avittam",
-   "title": "அனந்த சயனர் அருள் நாள்",
-   "titleEn": "அனந்த சயனர்'s blessing",
-   "oneLiner": "அனந்த சயனர் துணையுடன் இந்நாள் அமைதியாக அமையட்டும்.",
-   "oneLinerEn": "May Anantha Padmanabha keep this day calm and full of grace.",
-   "daily": true,
+   "oneLiner": "புதிய பூணூல் அணியும் ஆவணி அவிட்ட உபாகர்ம நாள்.",
+   "oneLinerEn": "Avani Avittam — the sacred Upakarma / thread-changing day.",
+   "always": true,
+   "major": true,
    "temple": {
-    "q": "Perumal Vishnu temple",
+    "q": "Vishnu Perumal temple",
     "ta": "பெருமாள் கோயில்",
     "en": "Perumal temple"
    },
@@ -9814,15 +9818,16 @@
    "starDeity": "காயத்ரி",
    "starCredit": "Gayatri — star lord of Astham",
    "tags": [
-    "amavasai"
+    "mahalaya"
    ],
-   "title": "அமாவாசை",
-   "titleEn": "Amavasai",
-   "icon": "new-moon",
-   "photo": "images/new-deepam.jpg",
-   "oneLiner": "முன்னோர்களை நினைத்து தர்ப்பணம் செய்யும் அமாவாசை.",
-   "oneLinerEn": "New-moon day to remember and honour the ancestors.",
-   "always": true
+   "title": "மகாளய அமாவாசை",
+   "titleEn": "Mahalaya Amavasai",
+   "icon": "mahalaya",
+   "photo": "images/new-naga.jpg",
+   "oneLiner": "முன்னோர்களை நினைந்து தர்ப்பணம் செய்யும் மகாளய அமாவாசை.",
+   "oneLinerEn": "Mahalaya Amavasai — remembrance and tarpanam for ancestors.",
+   "always": true,
+   "major": true
   },
   {
    "date": "2026-10-11",
@@ -27691,23 +27696,26 @@
    "starImage": "images/g-krishna.jpg",
    "starDeity": "கிருஷ்ணன்",
    "starCredit": "Krishna — star lord of Rohini",
-   "tags": [],
-   "photo": "images/g-krishna.jpg",
-   "photoCredit": "Krishna — star lord of Rohini",
-   "title": "கிருஷ்ணன் அருள் நாள்",
-   "titleEn": "கிருஷ்ணன்'s blessing",
-   "oneLiner": "கிருஷ்ணன் துணையுடன் இந்நாள் அமைதியாக அமையட்டும்.",
-   "oneLinerEn": "May Krishna keep this day calm and full of grace.",
-   "daily": true,
+   "tags": [
+    "karadaiyan"
+   ],
+   "title": "காரடையான் நோன்பு",
+   "titleEn": "Karadaiyan Nombu",
+   "icon": "karadaiyan",
+   "photo": "images/g-durga.jpg",
+   "oneLiner": "மங்கல்யப் பாதுகாப்பிற்காக பெண்கள் நோற்கும் நோன்பு.",
+   "oneLinerEn": "Karadaiyan Nombu — women's vratam for marital well-being.",
+   "always": true,
+   "major": true,
    "temple": {
-    "q": "Krishna temple",
-    "ta": "கிருஷ்ணன் கோயில்",
-    "en": "Krishna temple"
+    "q": "Amman temple",
+    "ta": "அம்மன் கோயில்",
+    "en": "Amman temple"
    },
    "audio": {
-    "q": "Krishna Bhajans Tamil",
-    "ta": "கிருஷ்ண பஜனை",
-    "en": "Krishna bhajans"
+    "q": "Savitri Gowri Stotram",
+    "ta": "கௌரி ஸ்தோத்திரம்",
+    "en": "Gowri Stotram"
    }
   },
   {
@@ -33991,23 +33999,26 @@
    "starImage": "images/g-shiva.jpg",
    "starDeity": "சிவன்",
    "starCredit": "Shiva — star lord of Mrigasheersham",
-   "tags": [],
-   "photo": "images/g-shiva.jpg",
-   "photoCredit": "Shiva — star lord of Mrigasheersham",
-   "title": "சிவன் அருள் நாள்",
-   "titleEn": "சிவன்'s blessing",
-   "oneLiner": "சிவன் துணையுடன் இந்நாள் அமைதியாக அமையட்டும்.",
-   "oneLinerEn": "May Shiva keep this day calm and full of grace.",
-   "daily": true,
+   "tags": [
+    "akshaya"
+   ],
+   "title": "அட்சய திருதியை",
+   "titleEn": "Akshaya Tritiya",
+   "icon": "akshaya",
+   "photo": "images/new-lakshmi.jpg",
+   "oneLiner": "அழியாத செல்வம் தரும் அட்சய திருதியை புண்ணிய நாள்.",
+   "oneLinerEn": "Akshaya Tritiya — an auspicious day of unending prosperity.",
+   "always": true,
+   "major": true,
    "temple": {
-    "q": "Shiva temple",
-    "ta": "சிவன் கோயில்",
-    "en": "Shiva temple"
+    "q": "Lakshmi temple",
+    "ta": "லட்சுமி கோயில்",
+    "en": "Lakshmi temple"
    },
    "audio": {
-    "q": "Lingashtakam",
-    "ta": "லிங்காஷ்டகம்",
-    "en": "Lingashtakam"
+    "q": "Sri Lakshmi Ashtakam",
+    "ta": "லட்சுமி அஷ்டகம்",
+    "en": "Lakshmi Ashtakam"
    }
   },
   {

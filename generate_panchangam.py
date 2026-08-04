@@ -258,6 +258,10 @@ TEMPLE = {
  "narasimha": ("Narasimha Perumal temple","நரசிம்மர் கோயில்","Narasimha temple"),
  "balaji":    ("Balaji Venkateswara temple","பாலாஜி கோயில்","Balaji temple"),
  "meenakshi": ("Meenakshi Amman temple","மீனாட்சி அம்மன் கோயில்","Meenakshi temple"),
+ "varalakshmi": ("Lakshmi temple","லட்சுமி கோயில்","Lakshmi temple"),
+ "upakarma": ("Vishnu Perumal temple","பெருமாள் கோயில்","Perumal temple"),
+ "karadaiyan": ("Amman temple","அம்மன் கோயில்","Amman temple"),
+ "akshaya": ("Lakshmi temple","லட்சுமி கோயில்","Lakshmi temple"),
 }
 
 # Listen-finder: occasion tag -> (YouTube search query, Tamil stotram name, English name).
@@ -287,6 +291,10 @@ AUDIO = {
  "narasimha": ("Narasimha Kavacham","நரசிம்ம கவசம்","Narasimha Kavacham"),
  "balaji":    ("Venkatesa Suprabhatam","வேங்கடேச சுப்ரபாதம்","Venkatesa Suprabhatam"),
  "meenakshi": ("Meenakshi Pancharatnam","மீனாட்சி பஞ்சரத்னம்","Meenakshi Pancharatnam"),
+ "varalakshmi": ("Sri Varalakshmi Ashtakam","வரலட்சுமி அஷ்டகம்","Varalakshmi Ashtakam"),
+ "upakarma": ("Vishnu Sahasranamam","விஷ்ணு சஹஸ்ரநாமம்","Vishnu Sahasranamam"),
+ "karadaiyan": ("Savitri Gowri Stotram","கௌரி ஸ்தோத்திரம்","Gowri Stotram"),
+ "akshaya": ("Sri Lakshmi Ashtakam","லட்சுமி அஷ்டகம்","Lakshmi Ashtakam"),
 }
 
 # Per-star-deity audio for plain days, by deity image (mirrors STAR_TEMPLE).
@@ -339,6 +347,12 @@ FIXED_FESTIVALS = {
  "2027-05-19": ("narasimha","நரசிம்ம ஜயந்தி","Narasimha Jayanthi","narasimha"),
  "2026-10-31": ("balaji","திருப்பதி ப்ரம்மோற்சவம்","Tirupati Brahmotsavam","balaji"),
  "2027-04-21": ("meenakshi","மீனாட்சி திருக்கல்யாணம்","Meenakshi Thirukalyanam","meenakshi"),
+ # Additional in-range festivals (verified: drikpanchang / prokerala / Kanchi Kamakoti)
+ "2026-08-21": ("varalakshmi","வரலட்சுமி விரதம்","Varalakshmi Vratham","lakshmi"),
+ "2026-08-27": ("upakarma","ஆவணி அவிட்டம் · உபாகர்மம்","Avani Avittam (Upakarma)","vishnu"),
+ "2026-10-10": ("mahalaya","மகாளய அமாவாசை","Mahalaya Amavasai","naga"),
+ "2027-03-15": ("karadaiyan","காரடையான் நோன்பு","Karadaiyan Nombu","durga"),
+ "2027-05-09": ("akshaya","அட்சய திருதியை","Akshaya Tritiya","lakshmi"),
 }
 FIXED_DESC = {
  "deepavali": ("ஒளியின் திருநாள் — தீபாவளி நல்வாழ்த்துக்கள்.","Deepavali — the festival of lights and new beginnings."),
@@ -350,6 +364,11 @@ FIXED_DESC = {
  "narasimha": ("விஷ்ணுவின் நரசிம்ம அவதார புண்ணிய தினம்.","Narasimha Jayanthi — Vishnu's man-lion avatar."),
  "balaji": ("திருப்பதி வேங்கடேசப் பெருமாள் ப்ரம்மோற்சவம்.","Tirupati Balaji Brahmotsavam — the festival of Venkateswara."),
  "meenakshi": ("மதுரை மீனாட்சி–சுந்தரேஸ்வரர் திருக்கல்யாணம்.","The celestial wedding of Madurai Meenakshi & Sundareswarar."),
+ "varalakshmi": ("செல்வம் அருளும் வரலட்சுமியை வழிபடும் விரதம்.","Varalakshmi Vratham — worship of the boon-granting Lakshmi."),
+ "upakarma": ("புதிய பூணூல் அணியும் ஆவணி அவிட்ட உபாகர்ம நாள்.","Avani Avittam — the sacred Upakarma / thread-changing day."),
+ "mahalaya": ("முன்னோர்களை நினைந்து தர்ப்பணம் செய்யும் மகாளய அமாவாசை.","Mahalaya Amavasai — remembrance and tarpanam for ancestors."),
+ "karadaiyan": ("மங்கல்யப் பாதுகாப்பிற்காக பெண்கள் நோற்கும் நோன்பு.","Karadaiyan Nombu — women's vratam for marital well-being."),
+ "akshaya": ("அழியாத செல்வம் தரும் அட்சய திருதியை புண்ணிய நாள்.","Akshaya Tritiya — an auspicious day of unending prosperity."),
 }
 
 # extra image keys used only by fixed festivals
@@ -363,6 +382,10 @@ PHOTO["ayyappa"]   = ("images/g-aiyappa.jpg","")
 PHOTO["narasimha"] = ("images/g-narasimhar.jpg","")
 PHOTO["balaji"]    = ("images/g-balaji.jpg","")
 PHOTO["meenakshi"] = ("images/g-meenakshi.jpg","")
+PHOTO["lakshmi"]   = ("images/new-lakshmi.jpg","")
+PHOTO["naga"]      = ("images/new-naga.jpg","")
+PHOTO["vishnu"]    = ("images/g-vishnu.jpg","")
+PHOTO["durga"]     = ("images/g-durga.jpg","")
 
 # ---- Pambu Panchangam overrides (Vakyam) — these WIN. Add dates as you verify them. ----
 OVERRIDES = {
