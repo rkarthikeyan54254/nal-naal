@@ -125,7 +125,7 @@ PHOTO = {
  "krithigai":("images/g-murugar.jpg","Murugan"),
  "chaturthi":("images/g-ganesh.jpg","Ganesha"),
  "pournami":("images/g-pournami.jpg","பௌர்ணமி · Full Moon"),
- "amavasai":("images/new-deepam.jpg","அமாவாசை · New Moon"),
+ "amavasai":("images/g-amavasai.jpg","அமாவாசை · New Moon"),
  "onam":("images/g-vishnu.jpg","Vishnu · Perumal"),
  "krishna":("images/g-krishna.jpg","Krishna"),
  "rama":("images/g-rama.jpg","Rama"),
@@ -138,7 +138,7 @@ PRIO = ["krishna","rama","hanuman","pooram","ekadasi","pradosham","shivaratri","
 # Every day therefore shows a real deity image based on its star.
 NAK_DEITY = {
  "Ashwini":   ("images/g-saraswathi.jpg","சரஸ்வதி","Saraswati — star lord of Ashwini"),
- "Bharani":   ("images/g-durga.jpg","துர்கை","Durga — star lord of Bharani"),
+ "Bharani":   ("images/g-abirami.jpg","அபிராமி","Abirami — star lord of Bharani"),
  "Krithigai": ("images/g-murugar.jpg","முருகன்","Murugan — star lord of Krithigai"),
  "Rohini":    ("images/g-krishna.jpg","கிருஷ்ணன்","Krishna — star lord of Rohini"),
  "Mrigasheersham":("images/g-shiva.jpg","சிவன்","Shiva — star lord of Mrigasheersham"),
@@ -150,7 +150,7 @@ NAK_DEITY = {
  "Pooram":    ("images/new-aandaal.jpg","ஆண்டாள்","Aandaal — star lord of Pooram"),
  "Uttiram":   ("images/new-lakshmi.jpg","மகாலட்சுமி","Mahalakshmi — star lord of Uttiram"),
  "Astham":    ("images/g-saraswathi.jpg","காயத்ரி","Gayatri — star lord of Astham"),
- "Chithirai": ("images/g-vishnu.jpg","சக்கரத்தாழ்வார்","Chakrathazhwar — star lord of Chithirai"),
+ "Chithirai": ("images/g-jaganath.jpg","ஜகந்நாதர்","Jagannatha — star lord of Chithirai"),
  "Swathi":    ("images/g-narasimhar.jpg","நரசிம்மர்","Narasimha — star lord of Swathi"),
  "Visakam":   ("images/g-murugar.jpg","முருகன்","Murugan — star lord of Visakam"),
  "Anusham":   ("images/g-periyavaa.jpg","மகா பெரியவா","Kanchi Maha Periyava — star lord of Anusham"),
@@ -161,7 +161,7 @@ NAK_DEITY = {
  "Thiruvonam":("images/g-hayagreevar.jpg","ஹயக்ரீவர்","Hayagreeva — star lord of Thiruvonam"),
  "Avittam":   ("images/g-vishnu.jpg","அனந்த சயனர்","Anantha Padmanabha — star lord of Avittam"),
  "Sadhayam":  ("images/g-shiva.jpg","மிருத்யுஞ்ஜயர்","Mrityunjaya — star lord of Sadhayam"),
- "Poorattathi":("images/g-shiva.jpg","ஏகபாதர்","Ekapada Shiva — star lord of Poorattathi"),
+ "Poorattathi":("images/g-sarabeswarar.jpg","சரபேஸ்வரர்","Sarabeswarar — star lord of Poorattathi"),
  "Uttirattathi":("images/g-shiva.jpg","மகா ஈஸ்வரர்","Maheswara — star lord of Uttirattathi"),
  "Revathi":   ("images/g-vishnu.jpg","அரங்கநாதன்","Ranganatha — star lord of Revathi"),
 }
@@ -218,9 +218,7 @@ def occasions(y,m,d, me, dn, wd, nak_en):
     # Krishna Jayanthi (Gokulashtami): Avani, Rohini nakshatram, Krishna paksha
     if me == "Avani" and nak_en == "Rohini":
         o.append(("krishna","கிருஷ்ண ஜயந்தி","Krishna Jayanthi","perumal"))
-    # Sri Rama Navami: Panguni, Navami tithi, Punarpoosam around
-    if me == "Panguni" and ti == 8:
-        o.append(("rama","ஸ்ரீ ராம நவமி","Sri Rama Navami","perumal"))
+    # Sri Rama Navami is handled as a fixed festival (Chithirai Shukla Navami) — see FIXED_FESTIVALS
     # Hanuman Jayanthi: Margazhi, Moolam nakshatram (Tamil tradition)
     if me == "Margazhi" and nak_en == "Moolam":
         o.append(("hanuman","அனுமன் ஜயந்தி","Hanuman Jayanthi","vel"))
@@ -262,6 +260,7 @@ TEMPLE = {
  "upakarma": ("Vishnu Perumal temple","பெருமாள் கோயில்","Perumal temple"),
  "karadaiyan": ("Amman temple","அம்மன் கோயில்","Amman temple"),
  "akshaya": ("Lakshmi temple","லட்சுமி கோயில்","Lakshmi temple"),
+ "kamakshi": ("Kamakshi Amman temple","காமாட்சி அம்மன் கோயில்","Kamakshi temple"),
 }
 
 # Listen-finder: occasion tag -> (YouTube search query, Tamil stotram name, English name).
@@ -295,6 +294,7 @@ AUDIO = {
  "upakarma": ("Vishnu Sahasranamam","விஷ்ணு சஹஸ்ரநாமம்","Vishnu Sahasranamam"),
  "karadaiyan": ("Savitri Gowri Stotram","கௌரி ஸ்தோத்திரம்","Gowri Stotram"),
  "akshaya": ("Sri Lakshmi Ashtakam","லட்சுமி அஷ்டகம்","Lakshmi Ashtakam"),
+ "kamakshi": ("Kamakshi Suprabhatam","காமாட்சி ஸ்தோத்திரம்","Kamakshi Stotram"),
 }
 
 # Per-star-deity audio for plain days, by deity image (mirrors STAR_TEMPLE).
@@ -312,6 +312,9 @@ STAR_AUDIO = {
  "new-aandaal.jpg":     ("Thiruppavai Andal","திருப்பாவை","Thiruppavai"),
  "new-naga.jpg":        ("Nagar Stotram","நாக ஸ்தோத்திரம்","Naga Stotram"),
  "new-surya.jpg":       ("Suryashtakam Surya Stotram","சூரிய அஷ்டகம்","Suryashtakam"),
+  "g-jaganath.jpg":    ("Vishnu Sahasranamam","விஷ்ணு சஹஸ்ரநாமம்","Vishnu Sahasranamam"),
+ "g-sarabeswarar.jpg":("Lingashtakam","லிங்காஷ்டகம்","Lingashtakam"),
+ "g-abirami.jpg":     ("Abirami Andhadhi","அபிராமி அந்தாதி","Abirami Andhadhi"),
  "g-periyavaa.jpg":    ("Maha Periyava Bhajan","மகா பெரியவா பஜனை","Maha Periyava bhajan"),
 }
 
@@ -322,7 +325,7 @@ FIXED_FESTIVALS = {
  "2026-09-04": ("krishna","கிருஷ்ண ஜயந்தி","Krishna Jayanthi","krishna"),
  "2026-09-14": ("chaturthi","விநாயகர் சதுர்த்தி","Vinayaka Chaturthi","chaturthi"),
  "2026-08-26": ("onam","திருவோணம் (ஓணம்)","Thiruvonam (Onam)","onam"),
- "2026-10-11": ("amman","நவராத்திரி ஆரம்பம்","Navaratri begins","amman"),
+ "2026-10-11": ("amman","நவராத்திரி ஆரம்பம்","Navaratri begins","kamakshi"),
  "2026-10-19": ("amman","சரஸ்வதி பூஜை","Saraswati Pooja","guru"),
  "2026-10-20": ("amman","விஜயதசமி · ஆயுத பூஜை","Vijayadashami · Ayudha Pooja","amman"),
  "2026-11-08": ("deepavali","தீபாவளி","Deepavali","deepavali"),
@@ -335,8 +338,8 @@ FIXED_FESTIVALS = {
  "2027-01-15": ("pongal","தைப் பொங்கல்","Thai Pongal","pongal"),
  "2027-01-16": ("pongal","மாட்டுப் பொங்கல்","Mattu Pongal","pongal"),
  "2027-01-17": ("pongal","காணும் பொங்கல்","Kaanum Pongal","pongal"),
- "2027-01-23": ("sashti","தைப்பூசம்","Thaipusam","sashti"),
- "2027-02-21": ("amman","மாசி மகம்","Maasi Magam","amman"),
+ "2027-01-22": ("sashti","தைப்பூசம்","Thaipusam","sashti"),
+ "2027-02-20": ("amman","மாசி மகம்","Maasi Magam","kamakshi"),
  "2027-03-06": ("shivaratri","மகா சிவராத்திரி","Maha Shivaratri","shivaratri"),
  "2027-03-22": ("pooram","பங்குனி உத்திரம்","Panguni Uthiram","amman"),
  "2027-04-14": ("puthandu","தமிழ்ப் புத்தாண்டு","Tamil New Year (Puthandu)","surya"),
@@ -345,12 +348,13 @@ FIXED_FESTIVALS = {
  "2026-11-16": ("ayyappa","மண்டல பூஜை ஆரம்பம்","Mandala Pooja begins (Ayyappan)","ayyappa"),
  "2027-01-07": ("hanuman-tamil","ஹனுமத் ஜயந்தி","Hanumath Jayanthi","hanuman"),
  "2027-05-19": ("narasimha","நரசிம்ம ஜயந்தி","Narasimha Jayanthi","narasimha"),
+ "2027-04-15": ("rama","ஸ்ரீ ராம நவமி","Sri Rama Navami","rama"),
  "2026-10-31": ("balaji","திருப்பதி ப்ரம்மோற்சவம்","Tirupati Brahmotsavam","balaji"),
  "2027-04-21": ("meenakshi","மீனாட்சி திருக்கல்யாணம்","Meenakshi Thirukalyanam","meenakshi"),
  # Additional in-range festivals (verified: drikpanchang / prokerala / Kanchi Kamakoti)
  "2026-08-21": ("varalakshmi","வரலட்சுமி விரதம்","Varalakshmi Vratham","lakshmi"),
  "2026-08-27": ("upakarma","ஆவணி அவிட்டம் · உபாகர்மம்","Avani Avittam (Upakarma)","vishnu"),
- "2026-10-10": ("mahalaya","மகாளய அமாவாசை","Mahalaya Amavasai","naga"),
+ "2026-10-10": ("mahalaya","மகாளய அமாவாசை","Mahalaya Amavasai","amavasai-img"),
  "2027-03-15": ("karadaiyan","காரடையான் நோன்பு","Karadaiyan Nombu","durga"),
  "2027-05-09": ("akshaya","அட்சய திருதியை","Akshaya Tritiya","lakshmi"),
 }
@@ -386,13 +390,15 @@ PHOTO["lakshmi"]   = ("images/new-lakshmi.jpg","")
 PHOTO["naga"]      = ("images/new-naga.jpg","")
 PHOTO["vishnu"]    = ("images/g-vishnu.jpg","")
 PHOTO["durga"]     = ("images/g-durga.jpg","")
+PHOTO["amavasai-img"] = ("images/g-amavasai.jpg","")
+PHOTO["kamakshi"]  = ("images/g-kamakshi.jpg","")
 
 # ---- Pambu Panchangam overrides (Vakyam) — these WIN. Add dates as you verify them. ----
 OVERRIDES = {
  "2026-07-24": {"nakshatra":"அனுஷம்","nakshatraEn":"Anusham","confidence":"verified","source":"Pambu Panchangam (Aadi 8) — confirmed"},
  "2026-07-26": {"tags":["pradosham"],"title":"பிரதோஷம்","titleEn":"Pradosham","icon":"shiva","photo":"images/g-shiva.jpg","oneLiner":"பிரதோஷ காலத்தில் சிவனை வழிபட மிக உகந்த நாள்.","oneLinerEn":"An auspicious Shiva evening — worship at pradosha twilight.","always":True,"confidence":"verified","source":"Pambu Panchangam (Aadi 10)"},
  "2026-07-28": {"tags":["pournami"],"title":"ஆடி பௌர்ணமி","titleEn":"Aadi Pournami","icon":"full-moon","photo":"images/g-pournami.jpg","oneLiner":"முழு நிலவு நாள் — வழிபாட்டிற்கு உகந்த ஆடிப் பௌர்ணமி.","oneLinerEn":"Aadi full-moon day — auspicious for worship and gratitude.","always":True,"confidence":"verified","source":"Pambu Panchangam (Aadi 12, circled)"},
- "2026-08-12": {"tags":["amavasai"],"title":"ஆடி அமாவாசை","titleEn":"Aadi Amavasai","icon":"new-moon","photo":"images/new-deepam.jpg","oneLiner":"முன்னோர்களை நினைத்து தர்ப்பணம் செய்யும் ஆடி அமாவாசை.","oneLinerEn":"Aadi new-moon — a day to honour the ancestors.","always":True,"confidence":"verified","source":"Pambu Panchangam (Aadi 27, circled)"},
+ "2026-08-12": {"tags":["amavasai"],"title":"ஆடி அமாவாசை","titleEn":"Aadi Amavasai","icon":"new-moon","photo":"images/g-amavasai.jpg","oneLiner":"முன்னோர்களை நினைத்து தர்ப்பணம் செய்யும் ஆடி அமாவாசை.","oneLinerEn":"Aadi new-moon — a day to honour the ancestors.","always":True,"confidence":"verified","source":"Pambu Panchangam (Aadi 27, circled)"},
 }
 
 def build(start, end):
@@ -493,6 +499,9 @@ def build(start, end):
                     "new-aandaal.jpg":("Aandaal Perumal temple","ஆண்டாள் கோயில்","Aandaal temple"),
                     "new-naga.jpg":("Naga temple","நாகர் கோயில்","Naga temple"),
                     "new-surya.jpg":("Surya temple","சூரியன் கோயில்","Surya temple"),
+                    "g-jaganath.jpg":("Perumal Vishnu temple","பெருமாள் கோயில்","Perumal temple"),
+                    "g-sarabeswarar.jpg":("Shiva temple","சிவன் கோயில்","Shiva temple"),
+                    "g-abirami.jpg":("Amman Devi temple","அம்மன் கோயில்","Amman temple"),
                     "g-periyavaa.jpg":("Kanchi Mutt","காஞ்சி மடம்","Kanchi Mutt"),
                 }
                 _base = os.path.basename(img)

@@ -1,8 +1,8 @@
-const CACHE = "nalnaal-v28";
+const CACHE = "nalnaal-v29";
 const ASSETS = [
   "./","./index.html","./styles.css","./app.js","./emblems.js","./data.json","./manifest.json",
   "./icons/icon-96.png","./icons/icon-144.png","./icons/icon-152.png","./icons/icon-180.png","./icons/icon-192.png","./icons/icon-512.png","./icons/badge-96.png",
-  "./images/g-aiyappa.jpg","./images/g-balaji.jpg","./images/g-bhairavar.jpg","./images/g-deepavali.jpg","./images/g-durga.jpg","./images/g-ganesh.jpg","./images/g-hanumar.jpg","./images/g-hayagreevar.jpg","./images/g-krishna.jpg","./images/g-meenakshi.jpg","./images/g-murugar.jpg","./images/g-narasimhar.jpg","./images/g-periyavaa.jpg","./images/g-pournami.jpg","./images/g-rama.jpg","./images/g-saraswathi.jpg","./images/g-shiva.jpg","./images/g-vishnu.jpg","./images/new-aandaal.jpg","./images/new-deepam.jpg","./images/new-karthigai-deepam.jpg","./images/new-lakshmi.jpg","./images/new-naga.jpg","./images/new-pongal.jpg","./images/new-surya.jpg"
+  "./images/g-abirami.jpg","./images/g-aiyappa.jpg","./images/g-amavasai.jpg","./images/g-balaji.jpg","./images/g-bhairavar.jpg","./images/g-deepavali.jpg","./images/g-durga.jpg","./images/g-ganesh.jpg","./images/g-hanumar.jpg","./images/g-hayagreevar.jpg","./images/g-jaganath.jpg","./images/g-kamakshi.jpg","./images/g-krishna.jpg","./images/g-meenakshi.jpg","./images/g-murugar.jpg","./images/g-narasimhar.jpg","./images/g-periyavaa.jpg","./images/g-pournami.jpg","./images/g-rama.jpg","./images/g-sarabeswarar.jpg","./images/g-saraswathi.jpg","./images/g-shiva.jpg","./images/g-vishnu.jpg","./images/new-aandaal.jpg","./images/new-karthigai-deepam.jpg","./images/new-lakshmi.jpg","./images/new-naga.jpg","./images/new-pongal.jpg","./images/new-surya.jpg"
 ]
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)));
